@@ -1,1 +1,3 @@
+*.pyc
 data/pubmed_result_scaffolds.xml
+data/scaffolds_data/
