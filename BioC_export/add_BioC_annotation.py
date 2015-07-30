@@ -121,6 +121,7 @@ if __name__=="__main__":
                 occurrences = []
                 for mesh in mesh_terms:
                     #search for start and end positions with case insensitivity
+                    #print passage, passage.text, type(passage), type(passage.text)
                     positions = [(a.start(), a.end()) for a in list(re.finditer(mesh.lower(), passage.text.lower()))]
                     if positions:
                         for tuples in positions:

@@ -1,161 +1,279 @@
 <?xml version='1.0' encoding='UTF-8'?><!DOCTYPE collection SYSTEM 'BioC.dtd'>
 <collection>
 <source>PubTator</source>
-<date>2015/04/09 </date>
+<date>2015/07/30</date>
 <key>PubTator.key</key>
 <document>
-<id>1000475</id>
+<id>95405</id>
 <passage>
 <infon key="type">title</infon>
 <offset>0</offset>
-<text>Carcinoembryonic antigen (CEA) activity in pancreatic juice of patients with pancreatic carcinoma and pancreatitis.</text>
-<annotation id='0'>
-<infon key="type">Disease</infon>
-<location offset='77' length='20' />
-<text>pancreatic carcinoma</text>
-<infon key="MEDIC">D010190</infon>
-</annotation>
-<annotation id='1'>
-<infon key="type">Disease</infon>
-<location offset='102' length='12' />
-<text>pancreatitis</text>
-<infon key="MEDIC">D010195</infon>
-</annotation>
+<text>Pathogenesis of proliferative neovascular retinopathies and the role of vitrectomy. A hypothesis.</text>
 </passage>
 <passage>
 <infon key="type">abstract</infon>
-<offset>115</offset>
-<text>Carcinoembryonic antigen (CEA) activity was assayed in plasma and in pure pancreatic juice from eight patients with carcinoma of the pancreas, 28 patients with pancreatitis, and 13 controls with no demonstrable pancreatic disease. Juice specimens were obtained via direct transduodenal cannulation of the pancreatic duct. The mean pancreatic juice CEA activities in controls, pancreatitis, and pancreatic carcinoma were 8.1 ng/ml, 18.6 ng/ml, and 309 ng/ml, respectively. Pancreatic juice CEA activity in patients with cancer of that organ was significantly higher than in those with pancreatitis or in controls. None of the 32 subjects with both pancreatic juice CEA activity less than 30 ng/ml and plasma CEA less than 2.5 ng/ml had pancreatic cancer. Three of the four patients with CEA elevations in both fluids above these levels harbored this malignancy. These findings suggest that combined measurement of CEA activity in plasma and pancreatic juice may help in diagnosing pancreatic disease.</text>
+<offset>97</offset>
+<text>Proliferative neovascular retinopathies may be caused by the release of a hypothetical vasoproliferative factor, but mechanical factors seem to self-perpetuate the disease as well. Contraction of proliferative tissue causes vitreous detachment and traction on the retina. Congestion of vascular fronds by traction further stimulates vascularization. Traction on vessels results in hemorrhages. Surgical removal of all intravitreal scaffolds by vitrectomy seems to eliminate the development of this vicious cycle. Results of vitreous surgery seem to indicate that the hypothesis of scaffold removal is valid.</text>
+<annotation id='0'>
+<infon key="type">Disease</infon>
+<location offset='16' length='39' />
+<text>proliferative neovascular retinopathies</text>
+<infon key="MEDIC">603933</infon>
+</annotation>
+<annotation id='1'>
+<infon key="type">Disease</infon>
+<location offset='84' length='12' />
+<text>A hypothesis</text>
+<infon key="MEDIC">D006506</infon>
+</annotation>
 <annotation id='2'>
 <infon key="type">Disease</infon>
-<location offset='232' length='25' />
-<text>carcinoma of the pancreas</text>
-<infon key="MEDIC">D021441</infon>
+<location offset='98' length='39' />
+<text>Proliferative neovascular retinopathies</text>
+<infon key="MEDIC">603933</infon>
 </annotation>
 <annotation id='3'>
 <infon key="type">Disease</infon>
-<location offset='276' length='12' />
-<text>pancreatitis</text>
-<infon key="MEDIC">D010195</infon>
-</annotation>
-<annotation id='4'>
-<infon key="type">Disease</infon>
-<location offset='327' length='18' />
-<text>pancreatic disease</text>
-<infon key="MEDIC">D010182</infon>
-</annotation>
-<annotation id='5'>
-<infon key="type">Disease</infon>
-<location offset='492' length='12' />
-<text>pancreatitis</text>
-<infon key="MEDIC">D010195</infon>
-</annotation>
-<annotation id='6'>
-<infon key="type">Disease</infon>
-<location offset='510' length='20' />
-<text>pancreatic carcinoma</text>
-<infon key="MEDIC">D010190</infon>
-</annotation>
-<annotation id='7'>
-<infon key="type">Disease</infon>
-<location offset='635' length='6' />
-<text>cancer</text>
-<infon key="MEDIC">D009369</infon>
-</annotation>
-<annotation id='8'>
-<infon key="type">Disease</infon>
-<location offset='700' length='12' />
-<text>pancreatitis</text>
-<infon key="MEDIC">D010195</infon>
-</annotation>
-<annotation id='9'>
-<infon key="type">Disease</infon>
-<location offset='851' length='17' />
-<text>pancreatic cancer</text>
-<infon key="MEDIC">D010190</infon>
-</annotation>
-<annotation id='10'>
-<infon key="type">Disease</infon>
-<location offset='1096' length='18' />
-<text>pancreatic disease</text>
-<infon key="MEDIC">D010182</infon>
+<location offset='322' length='19' />
+<text>vitreous detachment</text>
+<infon key="MEDIC">D020255</infon>
 </annotation>
 </passage>
 </document>
 
 <document>
-<id>1006519</id>
+<id>270727</id>
 <passage>
 <infon key="type">title</infon>
 <offset>0</offset>
-<text>Multiple sequential femoral tibial grafting for severe ischemia.</text>
-<annotation id='0'>
-<infon key="type">Disease</infon>
-<location offset='55' length='8' />
-<text>ischemia</text>
-<infon key="MEDIC">D007511</infon>
-</annotation>
+<text>Isolation of a protein scaffold from mitotic HeLa cell chromosomes.</text>
 </passage>
 <passage>
 <infon key="type">abstract</infon>
-<offset>64</offset>
-<text>For the past decade a common procedure used to salvage severely ischemic limbs has been autogenous vein bypass grafting to the distal popliteal artery or, if the popliteal trifurcation is occluded, to one of the tibial-peroneal branches. Reported limb salvage rate and long-term graft function varies considerably but in most series is low. To increase graft flow and to decrease resistance in femoral-poplitical-tibial grafts and thereby to perfuse the ischemic foot more effectively, we have employed multiple sequential anastomoses of a single vein graft to distal branches--a technique similar to that used occasionally in aortocoronary bypass grafting. The autogenous vein graft alone, or in combination with bovine heterograft, has been used in six patients with gangrenous toes or far advanced ischemia and in one patient with severe claudication. Multiple anastomoses below the knee were carried out in each patient. Anastomosis has been to a blind popliteal segment, then to a tibial or peroneal in four patients, to both tibials in another two patients, and to both tibials and the peroneal in one patient. Flow rates measured on the operating table clearly demonstrated a significant increase in flow through the graft with each additional anastomosis. There has been a greater response to surgery with return of pulses, warmth of the foot, and rapid healing as compared with previous patients having single femoral-tibial anastomoses. One failure occurred acutely from a technical problem early in the series; one failed at 3 months in a patient with pancreatic cancer and another patient died 2 weeks after operation of a myocardial infarct.</text>
-<annotation id='1'>
+<offset>67</offset>
+<text>We have recently shown that, after the histones and most of the nonhistone proteins are gently removed from HeLa metaphase chromosomes, the chromosomal DNA is still highly organized and relatively compact. The structure of these histone-depleted chromosomes is due to the presence of a number of nonhistone proteins that form a central scaffold that retains the approximate size and shape of intact chromosomes and to which the DNA is attached, predominantly forming loops. We now demonstrate that the protein scaffold may be isolated independently of the DNA by treating HeLa chromosomes with micrococcal nuclease before removing the histones.The chromosomal scaffolds may be isolated by sucrose density gradient centrifugation as a well-defined peak that is stable in 2 M sodium chloride, but is dissociated by treatment with proteases, 4 M urea, or 0.1% sodium dodecyl sulfate. Polyacrylamide gel electrophoresis reveals that the protein content of scaffold preparations is identical to that of histone-depleted chromosomes. Fluorescence microscopy of purified scaffolds in isolation buffer shows that the particles still possess the familiar chromosome morphology. When the scaffolds are examined in the electron microscope, a fibrous structure with the approximate size and shape of intact, paired chromatids is seen. Less than 0.1% of the chromosomal DNA and virtually no histones are associated with the purified scaffold structures.</text>
+</passage>
+</document>
+
+<document>
+<id>358193</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Fluorescent localization of membrane sites in glycerinated chicken skeletal muscle fibers and the relationship of these sites to the protein composition of the Z disc.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>167</offset>
+<text>Didansyl derivatives of amino acids and N-phenyl-1-naphthylamine were used to localize membrane hydrophobic sites in glycerol-extracted chicken skeletal muscle fibers. Epifluorescence microscopy revealed that such sites coincide with the distribution of mitochondria, the transverse tubular (T) system and the sarcoplasmic reticulum (SR). They are specifically associated with myofibril Z lines and occasionally extend from one Z plane to the next longitudinally along the muscle fiber. The hydrophobic probes interact noncovalently with the Z lines, and their induced fluorescence can be eliminated by exposure of the myofibrils to ionic detergents, nonionic detergents, or phospholipase C, before or after addition of the hydrophobic label. Extraction of glycerinated fibers with 0.6 M KI removes the majority of sarcomeric actin and myosin and leaves a scaffold of longitudinally interconnected Z planes. Membrane fluorescence remains tightly associated with these Z planes and with the remnant mitochondria. Shearing of such scaffolds results in the cleavage of the longitudinal connections and the production of large sheets of interconnected, close-packed Z discs in a honeycomb-like array. Comparison of the localization of two Z disc proteins, desmin and alpha-actinin, with that of the membrane material reveals that alpha-actinin is localized in the interior of each myofibril Z disc whereas both desmin and the membrane material surround each disc. Thus, glycerination and KI extraction of muscle fibers leaves remnants of T system and SR membranes tightly associated with the Z disc honeycomb lattice. Because the Z discs are connected at their peripheries through the T system appear to the plasma membrane, desmin and this membrane structure appear to be connected throughout the whole Z plane up to and including the plasma membrane. The congruent localization of desmin and the T system strongly suggests that this molecule mediates the adhesion of this membrane system around each Z disc.</text>
+</passage>
+</document>
+
+<document>
+<id>424289</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Cell specific antiserum to chromosome scaffold proteins.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>56</offset>
+<text>Antiserum has been raised to a chromosomal protein fraction specific for Hela cells. The immunoactivity is located in the transcriptionally inactive regions of log phase chromatin. Digestion of metaphase chromosomes results in the purification of the immunoactivity in the scaffold region of the chromosomes. Extensive nuclease digestion of the scaffolds results in loss of activity. The data suggest that some of the proteins in the scaffold area are both tight binding and cell specific and may therefore play a sophisticated role in gene expression.</text>
+</passage>
+</document>
+
+<document>
+<id>1303765</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Modeling the antigen combining site of an anti-dinitrophenyl antibody, ANO2.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>76</offset>
+<text>A model structure has been constructed for a monoclonal anti-dinitrophenyl antibody. The antibody, ANO2, has been sequenced and cloned (Anglister, J., Frey, T., &amp; McConnell, H.M., 1984, Biochemistry 23, 1138-1142). Its amino acid sequence shows striking homology with the anti-lysozyme Fab fragments HyHel5 (83%) and HyHel10 (73%). Based on this homology, a model for the ANO2 variable heavy and variable light chain framework was constructed using a hybrid of the HyHel5 light chain and the HyHel10 heavy chain backbone, omitting the hypervariable loops. These coordinates were used as scaffolds for the model building of ANO2. The CONGEN conformational sampling algorithm (Bruccoleri, R.E. &amp; Karplus, M., 1987, Biopolymers 26, 127-196) was used to model the six hypervariable loops that contain the antigen-combining site. All the possible conformations of the loop backbones were constructed and the best loop structures were selected using a combination of the CHARMM potential energy function and evaluation of the solvent-accessible surface area of the conformers. The order in which the loops were searched was carried out based on the relative locations of the loops with reference to the framework of the beta-barrel, namely, L2-H1-L3-H2-H3-L1. The model structures thus obtained were compared to the high resolution X-ray structure (Brünger, A.T., Leahy, D.J., Hynes, T.R., &amp; Fox, R.O., 1991, J. Mol. Biol. 221, 239-256).</text>
+<annotation id='0'>
 <infon key="type">Disease</infon>
-<location offset='866' length='8' />
-<text>ischemia</text>
-<infon key="MEDIC">D007511</infon>
-</annotation>
-<annotation id='2'>
-<infon key="type">Disease</infon>
-<location offset='906' length='12' />
-<text>claudication</text>
-<infon key="MEDIC">D007383</infon>
-</annotation>
-<annotation id='3'>
-<infon key="type">Disease</infon>
-<location offset='1628' length='17' />
-<text>pancreatic cancer</text>
-<infon key="MEDIC">D010190</infon>
-</annotation>
-<annotation id='4'>
-<infon key="type">Disease</infon>
-<location offset='1700' length='18' />
-<text>myocardial infarct</text>
-<infon key="MEDIC">D009203</infon>
+<location offset='1430' length='3' />
+<text>A.T</text>
+<infon key="MEDIC">C536782</infon>
 </annotation>
 </passage>
 </document>
 
 <document>
-<id>1010707</id>
+<id>1460083</id>
 <passage>
 <infon key="type">title</infon>
 <offset>0</offset>
-<text>Diagnosis of pancreatic cancer.</text>
-<annotation id='0'>
-<infon key="type">Disease</infon>
-<location offset='13' length='17' />
-<text>pancreatic cancer</text>
-<infon key="MEDIC">D010190</infon>
-</annotation>
+<text>Myosin heavy chain composition of single fibres and their origins and distribution in developing fascicles of sheep tibialis cranialis muscles.</text>
 </passage>
 <passage>
 <infon key="type">abstract</infon>
-<offset>31</offset>
-<text>Fifty-five patients underwent thorough laboratory and clinical investigations for pancreatic cancer. The disease was diagnosed in 32 patients. Thirty of these plus three others who did not undergo the sequence of tests underwent exploratory surgery. Pancreatic cancer was found in all. The high diagnostic accuracy was mainly due to the secretin test. We used Dreiling&apos;s technic for this test, which we think is the most popular and accurate technic.</text>
+<offset>143</offset>
+<text>The myosin heavy chain (MHC) composition of single muscle fibres in developing sheep tibialis cranialis muscles was examined immunohistochemically with monoclonal antibodies to MHC isozymes. Data were collected with conventional microscopy and computerized image analysis from embryonic day (E) 76 to postnatal day (PN) 20, and from adult animals. At E76, 23% of the young myofibres stained for slow-twitch MHC. The number of these fibres considerably exceeded the number of primary and secondary myotubes. By E100, smaller fibres, negative for slow-twitch MHC, encircled each fibre from the initial population to form rosettes. A second population of small fibres appeared in the unoccupied spaces between rosettes. Small fibres, whether belonging to rosettes or not, did not initially express slow-twitch MHC, expressing mainly neonatal myosin instead. These small fibres then diverged into three separate groups. In the first group most fibres transiently expressed adult fast myosin (maximal at E110-E120), but in the adult expressed slow myosin. This transformation to the slow MHC phenotype commenced at E110, was nearing completion by 20 postnatal days, and was responsible for approximately 60% of the adult slow twitch fibre population. In the other two groups expression of adult fast MHC was maintained, and in the adult they accounted for 14% (IIa MHC) and 17% (IIb MHC) of the total fibre numbers. We conclude that muscle fibre formation in this large muscle involves at least three generations of myotube. Secondary myotubes are generated on a framework of primary myotubes and both populations differentiate into the young myofibres which we observed at E76 to form rosettes. Tertiary myotubes, in turn, appear in the spaces between rosettes and along the borders of fascicles, using the outer fibres of rosettes as scaffolds.</text>
+<annotation id='0'>
+<infon key="type">Disease</infon>
+<location offset='460' length='2' />
+<text>PN</text>
+<infon key="MEDIC">604173</infon>
+</annotation>
+</passage>
+</document>
+
+<document>
+<id>1498604</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Characterization of a plant scaffold attachment region in a DNA fragment that normalizes transgene expression in tobacco.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>121</offset>
+<text>Using a low-salt extraction procedure, we isolated nuclear scaffolds from tobacco that bind specific plant DNA fragments in vitro. One of these fragments was characterized in more detail; this characterization showed that it contains sequences with structural properties analogous to animal scaffold attachment regions (SARs). We showed that scaffold attachment is evolutionarily conserved between plants and animals, although different SARs have different binding affinities. Furthermore, we demonstrated that flanking a chimeric transgene with the characterized SAR-containing fragment reduces significantly the variation in expression in series of transformants with an active insertion, whereas a SAR fragment from the human beta-globin locus does not. Moreover, the frequency distribution patterns of transgene activities showed that most of the transformants containing the plant SAR fragment had expression levels clustered around the mean. These data suggest that the particular plant DNA fragment can insulate the reporter gene from expression-influencing effects exerted from the host chromatin.</text>
+</passage>
+</document>
+
+<document>
+<id>1504829</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Behavior of axons, Schwann cells and perineurial cells in nerve regeneration within transplanted nerve grafts: effects of anti-laminin and anti-fibronectin antisera.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>165</offset>
+<text>Wistar rats (close cloned strain) were used to investigate the effect of endogenous laminin and fibronectin on axons, Schwann cells and perineurial cells in the regenerating peripheral nervous system (PNS). Sciatic nerve grafts obtained from donor rats were frozen, thawed and treated with rabbit anti-rat laminin or anti-fibronectin antiserum. Control grafts were treated with normal rabbit serum alone. One cm long portions of the sciatic nerve of the recipient rats were replaced with grafts. At 15 days after transplantation the number of regenerated axons in the laminin- and fibronectin-depleted grafts was half of that in the control. The growing axons in the laminin-depleted grafts did not recognize the basal lamina scaffolds (BLS) remaining in the basal lamina tubes, while in the control and fibronectin-depleted grafts 90% or more of axons grew inside the BLS. Elongation of axons always preceded migration of Schwann cells with the latter subsequently adhering to and wrapping around the former. Perineurium-forming fibroblastic cells recognized the combination of axons and Schwann cells and formed perineurial fasciculi around them. These fibroblastic cells did not recognize empty BLS but responded to them only when fibronectin was depleted. Macrophages sometimes closely faced the naked axons which elongated outside the BLS. These results suggest that in the early stages of nerve regeneration endogenous laminin and fibronectin not only regulate the growth of regenerating nerve fibers, but also exert a positive influence on perineurial cells and macrophages, both of which play important roles in nerve tissue injury and repair.</text>
+<annotation id='0'>
+<infon key="type">Disease</infon>
+<location offset='903' length='3' />
+<text>BLS</text>
+<infon key="MEDIC">D001816</infon>
+</annotation>
 <annotation id='1'>
 <infon key="type">Disease</infon>
-<location offset='114' length='17' />
-<text>pancreatic cancer</text>
-<infon key="MEDIC">D010190</infon>
+<location offset='1035' length='3' />
+<text>BLS</text>
+<infon key="MEDIC">D001816</infon>
 </annotation>
 <annotation id='2'>
 <infon key="type">Disease</infon>
-<location offset='282' length='17' />
-<text>Pancreatic cancer</text>
-<infon key="MEDIC">D010190</infon>
+<location offset='1364' length='3' />
+<text>BLS</text>
+<infon key="MEDIC">D001816</infon>
 </annotation>
+<annotation id='3'>
+<infon key="type">Disease</infon>
+<location offset='1506' length='3' />
+<text>BLS</text>
+<infon key="MEDIC">D001816</infon>
+</annotation>
+</passage>
+</document>
+
+<document>
+<id>1538529</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>From the Centers for Disease Control. Preventing electrocutions during work with scaffolds near overhead power lines.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>117</offset>
+<text></text>
+</passage>
+</document>
+
+<document>
+<id>1558234</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Meniscal regeneration with copolymeric collagen scaffolds. In vitro and in vivo studies evaluated clinically, histologically, and biochemically.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>144</offset>
+<text>We sought to create a regeneration template for the meniscal cartilage of the knee to induce complete meniscal regeneration, and to develop the technique for implanting the prosthetic appliance in vivo. We designed a resorbable collagen-based scaffold and conducted in vitro and in vivo studies. In vivo, the scaffold was implanted in the knees of immature swine and mature canines and evaluated clinically, histologically, and biochemically. Because the canine stifle joint meniscus is more clinically relevant to the human meniscus, this paper emphasizes those results. We studied 24 mixed breed dogs (14 males and 10 females) with an average weight of 25.5 kg (range, 20 to 35) that were obtained from a USDA-licensed supplier. The dogs were deemed clinically and radiographically skeletally mature. None of the dogs had a preexisting knee joint abnormality. All dogs underwent an 80% subtotal resection of the medial meniscus bilaterally. A collagen template was implanted in one stifle (N = 24). The contralateral side served as a control: 12 dogs had a total resection alone and the other 12 dogs had an immediate replantation of the autologous meniscus. Results were tabulated at 3, 6, 9, and 12 months. At final evaluation, before the animals were euthanized, the results were submitted for statistical analysis as well as histologic and biochemical analyses. The results demonstrated that a copolymeric collagen-based scaffold can be constructed that is compatible with meniscal fibrochondrocyte growth in vitro and in vivo, that does not inhibit meniscal regeneration in an immature pig, and that may induce regeneration of the meniscus in the mature dog.(ABSTRACT TRUNCATED AT 250 WORDS)</text>
+</passage>
+</document>
+
+<document>
+<id>1581605</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Morphometric analysis of the developing, murine aneural soleus muscle.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>70</offset>
+<text>The pattern of organogenesis of the aneural soleus muscle of the 129ReJ mouse [rendered aneural by laser ablation of the lumbosacral spinal cord at 14 days in utero (during the period of primary myotube formation, but prior to the formation of secondary myotubes)] was evaluated quantitatively with spaced, serial ultrathin sections and computer-assisted morphometric analysis. Aneural muscles from 16- and 18-day gestation and newborn mice were analyzed to determine age-related changes in a number of parameters including: muscles&apos; maximal girths, numbers of myotubes, myotube diameter distributions, and cluster frequency. Data were compared with a similar study of the organogenesis of the normal soleus muscle (Ontell et al: Am J Anat 181:279-288, 1988). Basic patterns of morphogenesis of the soleus muscle were unchanged by spinal cord ablation, and differences in development between the aneural and innervated muscles were quantitative rather than qualitative. At birth, the aneural muscle contained approximately 76% of the myotubes found in the innervated muscle (approximately 840 myotubes in the innervated muscle and approximately 640 in the aneural muscle). Evidence is presented consistent with the hypothesis that primary myotube formation is reduced by approximately 32% in the aneural muscles and that while extensive secondary myotube formation occurs (approximately 78% of the myotube present at birth in these muscles are secondary myotubes), there is a significant reduction in the number of secondary myotubes in aneural muscles. It is suggested that the reduced numbers of secondary myotubes may be related to the reduction in the number of primary myotubes, which are known to act as scaffolds for secondary myotube formation. The time course of secondary myotube formation and of cluster formation and cluster dispersal and the number of cells per cluster are similar in age-matched, innervated and aneural muscles. The absence of innervation has little effect on myotube growth until birth, when comparison of the myotube diameter distributions reveals a slight alteration in myotube diameter distributions of aneural as compared with innervated muscles.</text>
+<annotation id='0'>
+<infon key="type">Disease</infon>
+<location offset='1982' length='30' />
+<text>innervated and aneural muscles</text>
+<infon key="MEDIC">D006732</infon>
+</annotation>
+</passage>
+</document>
+
+<document>
+<id>1617403</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>The role of laminin, a component of Schwann cell basal lamina, in rat sciatic nerve regeneration within antiserum-treated nerve grafts.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>135</offset>
+<text>Regeneration of the sciatic nerve in transplanted nerve grafts in which laminin was inactivated was examined electron microscopically. Nerve grafts for transplantation were obtained from close cloned donor Wistar rats; 1-cm nerve segments of the sciatic nerve were frozen and thawed to kill the Schwann cells. Control recipient rats received grafts treated with normal rabbit serum to repair the artificially-made complete defect of the right sciatic nerve, and the experimental group of rats received grafts doubly treated with normal serum and rabbit anti-laminin antiserum. In the control grafts regenerating axons grew almost completely through the inside of the basal lamina scaffolds (92%) and adhered to the structure, while in the anti-laminin antiserum treated grafts the axons were present outside (52%) and inside (48%) the scaffolds simultaneously. In this case, the adhesion of axons to the scaffolds was obscure. Axons were associated with and without Schwann cells both inside and outside the basal lamina scaffolds. No unassociated Schwann cells were observed. The maximal number of axons in a 2 mm portion of the antiserum-treated grafts was approximately 250 axons per 100 x 100 microns square and 520 in the control at 15 days. At 30 days, almost the same number of axons was found at the distal (8 mm) portion of both groups. The growth in the former was delayed for 3 days. These results indicate that regenerating peripheral nerve axons may enter the basal lamina scaffolds and grow well because of the neurotrophic function of laminin present at the inner side of Schwann cell basal lamina.</text>
+</passage>
+</document>
+
+<document>
+<id>1656918</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>The capsid protein-encoding sequence of foot-and-mouth disease virus O2Brescia.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>79</offset>
+<text>Nucleotide sequences encoding the four capsid proteins of foot-and-mouth disease virus subtype O2Brescia/1947 have been determined. These and the deduced amino acid sequences were compared with those of a subtype O1 virus strain. The nucleotide sequences differed at 259 positions, causing only 35 amino acid changes. VP4 and VP2 differed by 2.4 and 1.8%, whereas VP1, known as major viral antigen, and VP3 differed by 8% and 5.5%, respectively. The differences occur mainly in protein domains not involved in the formation of alpha-helices and beta-sheets, suggesting that the surfaces of both viruses are more variable than their scaffolds. The O2Brescia sequence has been submitted to the GenBank data base and has the accession number M 55287.</text>
+<annotation id='0'>
+<infon key="type">Disease</infon>
+<location offset='40' length='38' />
+<text>foot-and-mouth disease virus O2Brescia</text>
+<infon key="MEDIC">D005536</infon>
+</annotation>
+<annotation id='1'>
+<infon key="type">Disease</infon>
+<location offset='138' length='22' />
+<text>foot-and-mouth disease</text>
+<infon key="MEDIC">D005536</infon>
+</annotation>
+</passage>
+</document>
+
+<document>
+<id>1718472</id>
+<passage>
+<infon key="type">title</infon>
+<offset>0</offset>
+<text>Toward nonpeptidal substance P mimetic analogues: design, synthesis, and biological activity.</text>
+</passage>
+<passage>
+<infon key="type">abstract</infon>
+<offset>93</offset>
+<text>1,4-Piperazine and 4-hydroxyproline, two small cyclic polyfunctional systems with defined stereochemistry, were introduced as &quot;molecular scaffolds.&quot; We define a &quot;bioactive topology,&quot; which is a derived putative low-energy conformation obtained through theoretical conformational analysis of substance P. Substitution of these molecular scaffolds by pharmacophors characteristic of the bioactive topology of the C-terminal hexapeptide of substance P resulted in active, partially nonpeptidal substance P mimetic agonists. The study discusses the concepts and tools used to achieve this structural transformation, and points out the need to address flexibility-rigidity issues in an attempt to maintain sufficient molecular plasticity.</text>
 </passage>
 </document>
 </collection>

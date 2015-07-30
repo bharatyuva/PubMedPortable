@@ -560,7 +560,7 @@ Examples for Using BioC and PubTator
 
 - The BioC XML format was introduced at BioCreative (http://www.biocreative.org/events/BCBioCuration2014/biocreative-text-mining-worksh) and also used at BioNLP (http://2013.bionlp-st.org/supporting-resources). The BioC project homepage contains several related software packages (http://bioc.sourceforge.net).
 
-- The file "pmid_list.txt" contains 21 PubMed-IDs that were taken from "PubMed2Go/data/pubmed_result.txt". It is used as default by the script "write_BioC_XML.py".
+- The file "pmid_list.txt" contains 21 PubMed-IDs that were taken from "PubMed2Go/data/pubmed_result.txt". It is used as default by the script "write_BioC_XML.py". If you do not have pubmed_result.txt file which was to download the dataset you can get the ids to save in "pmid_list.txt" from the table tbl_abstract or/and tbl_medline_citation of the datbase in this case it is pancreatic_cancer_db. 
 
 - This script also uses the file "BioC.dtd", which defines the structure of the XML file (taken from https://github.com/2mh/PyBioC).  Additionally, the file "Explanation.key" describes the semantics used for the annotations. In this example, MeSH terms are added as annotation XML elements to the basic BioC XML structure.
 
