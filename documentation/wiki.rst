@@ -306,6 +306,8 @@ Build up a Full Text Index with Xapian and Search It
 
         - This file contains manually chosen names of drugs, genes, proteins, and diseases related to pancreatic cancer.
 
+        - You can write your customized synonyms in a text file and can be passed to the Xapian while running RunXapian.py with the parameter "-p".
+
     - The output in the command-line shows how many PubMed-IDs are indexed (23258) and how many synonyms are searched (86).
 
     - This takes around 2-3 min on a 2,83 GHz machine with 8 GB RAM.
@@ -359,7 +361,7 @@ Xapian
 
     - "python search_title.py" shows that only a few lines of code are required to search only publication titles. This can be important as searching especially in publication titles puts more emphasis on the queried synonyms.
 
-        - While "RunXapian.py" searches only the exact phrase "pancreatic cancer", "search_title.py" searches for the stem "pancreat" and also finds the word "pancreatitis".
+        - While "RunXapian.py" searches only the exact phrase "pancreatic cancer", "search_title.py" searches for the stem "pancreat" and also finds the word "pancreatitis". You can change the querystring in the script search_title.py for phrase you want to search. 
 
         - It generates "Xapian_query_results.html" which shows the first 1000 of 18085 titles. Like this, many associated words are shown, e.g. "pancreatic ductal adenocarcinoma", "pancreatic juice", or "pancreatic diseases".
 
@@ -372,6 +374,8 @@ Xapian
         - An alternative would be the query with "ADJ/5", which reduces the number of 38 hits to 4 hits, because with this function, the order of search terms is fixed.
 
         - Here, the exact search is performed, again.
+
+        - These querries can be changed in the script search_near_title.py edit the inputs to the variables querystring1 and querystring2.
 
     - As it was done in "RunXapian.py" different index fields can be searched. 
 
@@ -503,7 +507,7 @@ Word Cloud
 Pie Chart
 ---------
 
-    - In this subsection, the library "matplotlib" is needed to generate a pie chart. You can install it with the command "sudo apt-get install python-matplotlib".
+    - In this subsection, the library "matplotlib" is needed to generate a pie chart. You can install it with the command "sudo apt-get install python-matplotlib" in ubuntu or with command "dnf install python-matplotlib" from Fedora 22 or with command "yum install python-matplotlib" in Fedora < 22.
 
     - By running "python pie_chart_countries.py", the picture "pie_chart_countries_publications.png" is produced from the input file "countries_pancreatic_cancer.csv".
 

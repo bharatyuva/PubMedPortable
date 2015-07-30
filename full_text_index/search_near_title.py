@@ -13,8 +13,8 @@ searchConn.reopen()
 
 #########################
 
-querystring1 = "pancreatic cancer"
-querystring2 = "Erlotinib"
+querystring1 = "scaffolds"
+querystring2 = "finger"
 
 #in the following example, "pancreatic cancer" and "Erlotinib" are not allowed to have more than 4 other words between them"
 #"title" and "text" are searched with Xapian

@@ -13,7 +13,7 @@ conn = xappy.SearchConnection("xapian/xapian2015")
 conn.reopen()
 
 
-queryString = "pancreatic colon lung ovarian"
+queryString = "ECfp4"
 
 terms = queryString.split(' ')
 

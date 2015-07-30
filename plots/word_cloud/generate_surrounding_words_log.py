@@ -78,7 +78,7 @@ if __name__=="__main__":
     infile = open(os.path.join(xapian_path, pmids_input),"r")
     for line in infile:
         temp_line = line.strip().split("\t")
-        if temp_line[1] == "Gemcitabine":
+        if temp_line[1] == "scaffolds":
             pmids.append(temp_line[0])
     infile.close()
     # make list unique:

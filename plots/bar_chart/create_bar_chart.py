@@ -90,7 +90,7 @@ if __name__=="__main__":
     p1 = ax.bar(data, bins,width=w, color='orange',align='center')
     p2 = ax.bar(data_2, bins_2 ,width=w, color='green',align='center')
     p3 = ax.bar(data_3, bins_3 ,width=w, color='blue',align='center')
-    ax.legend((p1[0],p2[2],p3[0]),("KRAS","BRCA2","CDKN2A"),loc=2)
+    ax.legend((p1[0],p2[2],p3[0]),("fingerprint","ontology","scaffolds"),loc=2)
 
     # add lables for x-axis and y-axis
     plt.ylabel("No. of Publications")
