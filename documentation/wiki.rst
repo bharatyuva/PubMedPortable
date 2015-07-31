@@ -492,11 +492,11 @@ Word Cloud
 
         - https://github.com/atizo/PyTagCloud
 
-    - For the first plot given here, use the command "python create_word_cloud.py -i counts_search_terms_log.csv -o cloud_search_terms.png".
+    - For the first plot given here, use the command "python create_word_cloud.py -i counts_search_terms_log.csv -o cloud_search_terms.png". Adjust the parameters in the script create_word_cloud.py in the line create_tag_image, change parameter in size method of the output file to get the better cloud image.
 
     .. image:: cloud_search_terms_700_w.png
 
-    - For the next figure, run "python create_word_cloud.py -i counts_surrounding_words_log.csv -o cloud_surrounding_words.png".
+    - For the next figure, run "python create_word_cloud.py -i counts_surrounding_words_log.csv -o cloud_surrounding_words.png". Here also adjust the parameters in the script create_word_cloud.py in the line create_tag_image, change parameter in size method of the output file to get the better cloud image. 
 
         .. image:: cloud_surrounding_words_500_w.png
 
@@ -560,7 +560,7 @@ Examples for Using BioC and PubTator
 
 - The BioC XML format was introduced at BioCreative (http://www.biocreative.org/events/BCBioCuration2014/biocreative-text-mining-worksh) and also used at BioNLP (http://2013.bionlp-st.org/supporting-resources). The BioC project homepage contains several related software packages (http://bioc.sourceforge.net).
 
-- The file "pmid_list.txt" contains 21 PubMed-IDs that were taken from "PubMed2Go/data/pubmed_result.txt". It is used as default by the script "write_BioC_XML.py". If you do not have pubmed_result.txt file which was to download the dataset you can get the ids to save in "pmid_list.txt" from the table tbl_abstract or/and tbl_medline_citation of the datbase in this case it is pancreatic_cancer_db. 
+- The file "pmid_list.txt" contains 21 PubMed-IDs that were taken from "PubMed2Go/data/pubmed_result.txt". It is used as default by the script "write_BioC_XML.py". If you do not have pubmed_result.txt file which was one of the alternative to get the dataset done in the section Download a Data set, you can get the ids by saving them to "pmid_list.txt" from the table tbl_abstract or/and tbl_medline_citation and also make sure you get some pubmed IDs from table tbl_mesh_heading so that the annotation works fine in the later example when you run the script add_BioC_annotation.py of the datbase in this case it is pancreatic_cancer_db. 
 
 - This script also uses the file "BioC.dtd", which defines the structure of the XML file (taken from https://github.com/2mh/PyBioC).  Additionally, the file "Explanation.key" describes the semantics used for the annotations. In this example, MeSH terms are added as annotation XML elements to the basic BioC XML structure.
 
@@ -604,9 +604,9 @@ Examples for Using BioC and PubTator
 
     - http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools
 
-- They are described in the following PDF file as well as other software packages in chapter "TRACK 1 (BioC: Interoperability)":
+- They are described in the following PDF file as well as other software packages in chapter "TRACK 1 (BioC: Interoperability)"
 
-    - http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV_vol1_.pdf 
+    - http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV_vol1_.pdf
 
     - There are also other webservices included as well as BioC natural language preprocessing pipelines in C++ and Java (http://bioc.sourceforge.net).
 
