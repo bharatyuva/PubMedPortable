@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <collection>
 	<source>PubMed</source>
-	<date>2015-July-30</date>
+	<date>2015-July-31</date>
 	<key>Explanation.key</key>
 	<document>
 		<id>95405</id>
@@ -178,6 +178,136 @@
 			<infon key="type">abstract</infon>
 			<offset>93</offset>
 			<text>1,4-Piperazine and 4-hydroxyproline, two small cyclic polyfunctional systems with defined stereochemistry, were introduced as "molecular scaffolds." We define a "bioactive topology," which is a derived putative low-energy conformation obtained through theoretical conformational analysis of substance P. Substitution of these molecular scaffolds by pharmacophors characteristic of the bioactive topology of the C-terminal hexapeptide of substance P resulted in active, partially nonpeptidal substance P mimetic agonists. The study discusses the concepts and tools used to achieve this structural transformation, and points out the need to address flexibility-rigidity issues in an attempt to maintain sufficient molecular plasticity.</text>
+		</passage>
+	</document>
+	<document>
+		<id>23467042</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Heparin crosslinked chitosan microspheres for the delivery of neural stem cells and growth factors for central nervous system repair.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>133</offset>
+			<text>An effective paradigm for transplanting large numbers of neural stem cells after central nervous system (CNS) injury has yet to be established. Biomaterial scaffolds have shown promise in cell transplantation and in regenerative medicine, but improved scaffolds are needed. In this study we designed and optimized multifunctional and biocompatible chitosan-based films and microspheres for the delivery of neural stem cells and growth factors for CNS injuries. The chitosan microspheres were fabricated by coaxial airflow techniques, with the sphere size controlled by varying the syringe needle gauge and the airflow rate. When applying a coaxial airflow at 30 standard cubic feet per hour, ∼300μm diameter spheres were reproducibly generated that were physically stable yet susceptible to enzymatic degradation. Heparin was covalently crosslinked to the chitosan scaffolds using genipin, which bound fibroblast growth factor-2 (FGF-2) with high affinity while retaining its biological activity. At 1μgml(-1) approximately 80% of the FGF-2 bound to the scaffold. A neural stem cell line, GFP+RG3.6 derived from embryonic rat cortex, was used to evaluate cytocompatibility, attachment and survival on the crosslinked chitosan-heparin complex surfaces. The MTT assay and microscopic analysis revealed that the scaffold containing tethered FGF-2 was superior in sustaining survival and growth of neural stem cells compared to standard culture conditions. Altogether, our results demonstrate that this multifunctional scaffold possesses good cytocompatibility and can be used as a growth factor delivery vehicle while supporting neural stem cell attachment and survival.</text>
+		</passage>
+	</document>
+	<document>
+		<id>24099554</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Adrenomedullin delivery in microsphere-scaffold composite for remodeling of the alveolar bone following tooth extraction: an experimental study in the rat.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>155</offset>
+			<text>BACKGROUND: Alveolar ridge resorption, as a significant problem in implant and restorative dentistry, has long been considered as an inevitable outcome following tooth extraction. Recently, adrenomedullin (ADM) is reported to be able to stimulate the proliferation and migration of various cells including osteoblasts. The purpose of this study was to investigate the influence of local ADM application in the tooth extraction socket in vivo. METHODS: Chitosan micropheres were developed by an emulsion-ionic cross-linking method for ADM delivery. Poly (L -lactic-co-glycolic) acid (PLGA) and nano-hydroxyapatite (nHA) were used to prepare scaffolds to contain the micrspheres with ADM. In vivo experiment was evaluated by transplanting the composite into the rat socket right after the incisor extraction. After 4, 8, 12 weeks implantation, radiographic and histological tests were carried out to evaluate the effect of released ADM on the alveolar bone. RESULTS: The microspheres had a spherical structure and a relative rough and uniform surface, and the particle size was under a normal distribution, with the average diameter of 38.59 μm. The scaffolds had open and interconnected pores. In addition, the high porosity of the composite was 88.93%. Radiographic and histological examination revealed that the PLGA/nHA/CMs/ADM composite could accelerate the alveolar bone remodeling and reduce the residual ridge resorption compared with the PLGA/nHA/CMs scaffold. CONCLUSIONS: The results of this study suggest that local application of ADM has the potential to preserve the residual alveolar ridge and accelerate the alveolar bone remodeling.</text>
+		</passage>
+	</document>
+	<document>
+		<id>20553981</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Mechanical properties and cytocompatibility of poly(ε-caprolactone)-infiltrated biphasic calcium phosphate scaffolds with bimodal pore distribution.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>149</offset>
+			<text>Biphasic calcium phosphate scaffolds have attracted interest because they have good osteoconductivity and a resorption rate close to that of new bone ingrowth, but their brittleness limits their potential applications. In this study, we show how the infiltration of biphasic calcium phosphate scaffolds with poly(ε-caprolactone) improves their mechanical properties. It was found that the polymer effectively contributes to energy to failure enhancement in bending, compressive and tensile tests. The main toughening mechanism in these composites is crack bridging by polymer fibrils. The presence of fibrils at two different size scales--as found in scaffolds with a bimodal pore distribution--results in a more effective toughening effect as compared to scaffolds with a monomodal pore size distribution, especially in the early stage of mechanical deformation. An optimized infiltration process allowed the preservation of micropore interconnection after infiltration, which is beneficial for cells adhesion. In addition, it is shown that biphasic calcium phosphates infiltrated with poly(ε-caprolactone) are cytocompatible with human bone marrow stromal cells, which makes them good candidates for bone substitution.</text>
+		</passage>
+	</document>
+	<document>
+		<id>17584900</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Poly(glycerol sebacate) supports the proliferation and phenotypic protein expression of primary baboon vascular cells.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>118</offset>
+			<text>Poly(glycerol sebacate) (PGS) is a biodegradable and biocompatible elastomer specifically developed for soft tissue engineering. Vascular cells adhered to an elastomer may exhibit more physiological behavior because the substrate's mechanical properties more closely match those of the tissue. To investigate the feasibility of using PGS as a scaffold material for vascular tissue engineering, the authors examined the adhesion, proliferation, and phenotypic and morphologic properties of primary baboon endothelial progenitor cells (BaEPCs) and baboon smooth muscle cells (BaSMCs) cultured on PGS films and scaffolds. Tissue culture-treated polystyrene plates were used as controls. Phase contrast microscopy indicated that both types of cells showed normal morphology on PGS films. Immuofluorescent staining revealed that von Willebrand factor and alpha-smooth muscle actin were expressed by BaEPCs and BaSMCs, respectively. Both types of cells proliferated well on PGS surfaces. When cultured in PGS scaffolds, BaSMCs were distributed throughout the scaffolds and synthesized extracellular matrix, as indicated by histological evaluations. The distribution of the BaSMCs in the constructs was confirmed by scanning electron microscopy. Immunofluorescent staining of cocultured constructs indicated that the BaSMC-seeded constructs provided suitable surfaces for BaEPC adhesion, and both types of cells maintained their specific phenotypes. These results suggest that PGS is an appropriate scaffold material for blood vessel tissue engineering.</text>
+		</passage>
+	</document>
+	<document>
+		<id>21571313</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Murine tissue-engineered stomach demonstrates epithelial differentiation.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>73</offset>
+			<text>BACKGROUND: Gastric cancer remains the second largest cause of cancer-related mortality worldwide. Postgastrectomy morbidity is considerable and quality of life is poor. Tissue-engineered stomach is a potential replacement solution to restore adequate food reservoir and gastric physiology. In this study, we performed a detailed investigation of the development of tissue-engineered stomach in a mouse model, specifically evaluating epithelial differentiation, proliferation, and the presence of putative stem cell markers. MATERIALS AND METHODS: Organoid units were isolated from &lt;3 wk-old mouse glandular stomach and seeded onto biodegradable scaffolds. The constructs were implanted into the omentum of adult mice. Implants were harvested at designated time points and analyzed with histology and immunohistochemistry. RESULTS: Tissue-engineered stomach grows as an expanding sphere with a simple columnar epithelium organized into gastric glands and an adjacent muscularis. The regenerated gastric epithelium demonstrates differentiation of all four cell types: mucous, enteroendocrine, chief, and parietal cells. Tissue-engineered stomach epithelium proliferates at a rate comparable to native glandular stomach and expresses two putative stem cell markers: DCAMKL-1 and Lgr5. CONCLUSIONS: This study demonstrates the successful generation of tissue-engineered stomach in a mouse model for the first time. Regenerated gastric epithelium is able to appropriately proliferate and differentiate. The generation of murine tissue-engineered stomach is a necessary advance as it provides the transgenic tools required to investigate the molecular and cellular mechanisms of this regenerative process. Delineating the mechanism of how tissue-engineered stomach develops in vivo is an important precursor to its use as a human stomach replacement therapy.</text>
+		</passage>
+	</document>
+	<document>
+		<id>22070326</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Design and manufacture of combinatorial calcium phosphate bone scaffolds.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>73</offset>
+			<text>It is well known that pore design is an important determinant of both the quantity and distribution of regenerated bone in artificial bone tissue scaffolds. A requisite feature is that scaffolds must contain pore interconnections on the order of 100-1000 μm (termed macroporosity). Within this range, there is not a definitive optimal interconnection size. Recent results suggest that pore interconnections permeating the scaffold build material on the order of 2-20 μm (termed microporosity) drive bone growth into the macropore space at a faster rate and also provide a new space for bone growth, proliferating throughout the interconnected microporous network. The effects of microstructural features on bone growth has yet to be fully understood. This work presents the manufacture and characterization of novel combinatorial test scaffolds, scaffolds that test multiple microporosity and macroporosity designs within a single scaffold. Scaffolds such as this can efficiently evaluate multiple mechanical designs, with the advantage of having the designs colocated within a single defect site and therefore less susceptible to experimental variation. This paper provides the manufacturing platform, manufacturing control method, and demonstrates the manufacturing capabilities with three representative scaffolds.</text>
+		</passage>
+	</document>
+	<document>
+		<id>22197592</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Assessment of silk fibroin for the repair of buccal mucosa in a rat model.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>74</offset>
+			<text>This study evaluated the effectiveness of silk fibroin materials for wound repair confined to the buccal mucosa in a rat model by assessing several key clinical parameters and the associated local and systemic immune response. Ninety male SD rats were subjected to microscopic oral surgery to establish a full thickness wound on the buccal mucosa. Rats were randomly divided into three groups based on the treatments received: group A, covered with polyporous silk fibroin scaffold; group B, repaired with crosslinking silk fibroin film; and group C, control. Visual observation of the wounds suggests that wound shrinkage 5 days after the operation was significantly lower in both silk fibroin repaired groups (A and B) than that in the controls. The distribution of inflammatory neutrophils in group A was significantly lower than those in the control group throughout the entire study. The percentage of fibroblasts and capillary endothelia (CD34(+)), and the subgroups of peripheral lymphocytes (CD3(+), CD4(+), CD8(+)) were similar amongst the groups. The results revealed that placement of silk fibroin in an oral buccal defect can reduce the degree of wound shrinkage and enhance the growth of mucosal epithelial cells without any local or systemic immunological incompatibility.</text>
+		</passage>
+	</document>
+	<document>
+		<id>20863126</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>General solution to the synthesis of N-2-substituted 1,2,3-triazoles.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>69</offset>
+			<text>The regioselective N-alkylation of 1,2,3-triazoles 1-6 was studied. Good to excellent N-2 selectivity and high chemical yields for N-2-substituted 4,5-dibromotriazoles 7 were obtained with 4,5-dibromo- and 4-bromo-5-trimethylsilyl-1,2,3-triazoles. These building blocks can be readily converted to 2-mono-, 2,4-di-, and 2,4,5-polysubstituted triazoles 10-15, providing a general, protective, group-free method for the synthesis of N-2-substituted triazoles. Observed regioselectivities can be rationalized by a combination of Frontier Molecular Orbital, steric, and electrostatic directing effects on the heterocyclic scaffolds.</text>
+		</passage>
+	</document>
+	<document>
+		<id>18336785</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Effects of iron oxide incorporation for long term cell tracking on MSC differentiation in vitro and in vivo.</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>108</offset>
+			<text>Successful cell therapy will depend on the ability to monitor transplanted cells. With cell labeling, it is important to demonstrate efficient long term labeling without deleterious effects on cell phenotype and differentiation capacity. We demonstrate long term (7 weeks) retention of superparamagnetic iron oxide particles (SPIO) by mesenchymal stem cells (MSCs) in vivo, detectable by MRI. In vitro, multilineage differentiation (osteogenic, chondrogenic and adipogenic) was demonstrated by histological evaluation and molecular analysis in SPIO labeled and unlabeled cells. Gene expression levels were comaparable to unlabeled controls in adipogenic and chondrogenic conditions however not in the osteogenic condition. MSCs seeded into a scaffold for 21 days and implanted subcutaneously into nude mice for 4 weeks, showed profoundly altered phenotypes in SPIO labeled samples compared to implanted unlabeled control scaffolds, indicating chondrogenic differentiation. This study demonstrates long term MSC traceability using SPIO and MRI, uninhibited multilineage MSC differentiation following SPIO labeling, though with subtle but significant phenotypical alterations.</text>
+		</passage>
+	</document>
+	<document>
+		<id>15705929</id>
+		<passage>
+			<infon key="type">title</infon>
+			<offset>0</offset>
+			<text>Tissue-engineered blood vessels: alternative to autologous grafts?</text>
+		</passage>
+		<passage>
+			<infon key="type">abstract</infon>
+			<offset>66</offset>
+			<text>Although vascular bypass grafting remains the mainstay for revascularization for ischemic heart disease and peripheral vascular disease, many patients do not have healthy vessels suitable for harvest. Thus, prosthetic grafts made of synthetic polymers were developed, but their use is limited to high-flow/low-resistance conditions because of poor elasticity, low compliance, and thrombogenicity of their synthetic surfaces. To fill this need, several laboratories have produced in vivo or in vitro tissue-engineered blood vessels using molds or prosthetic or biodegradable scaffolds, but each artificial graft has significant problems. Recently, conduits have been grown in the peritoneal cavity of the same animals in which they will be grafted, ensuring no rejection, in the short time of 2 to 3 weeks. Remodeling occurs after grafting such that the tissue is almost indistinguishable from native vessels. This conduit is derived from cells of bone marrow origin, opening new possibilities in vascular modeling and remodeling.</text>
 		</passage>
 	</document>
 </collection>
