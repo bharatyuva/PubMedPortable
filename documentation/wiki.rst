@@ -1,15 +1,15 @@
-=========
-PubMed2Go
-=========
+==============
+PubMedPortable
+==============
 
 
 ************
 Introduction
 ************
 
-- PubMed2Go processes XML files that can be downloaded from NCBI and builds up a PostgreSQL database containing all abstracts of the data set (no full texts).
+- PubMedPortable processes XML files that can be downloaded from NCBI and builds up a PostgreSQL database containing all abstracts of the data set (no full texts).
 
-- Furthermore, PubMed2Go generates a full text index with Xapian such that titles, abstracts, keywords, MeSH terms and substances can be queried with search terms.
+- Furthermore, PubMedPortable generates a full text index with Xapian such that titles, abstracts, keywords, MeSH terms and substances can be queried with search terms.
 
 - It is scalable to your system requirements using multiprocessing and can be modified easily to your personal needs.
 
@@ -17,7 +17,7 @@ Introduction
 
 - Pancreatic cancer is one of the most dangerous cancer types, because the only way to cure a patient is a surgery beside several therapeutic strategies that could not significantly increase survival rates [Pancreatic cancer: from state-of-the-art treatments to promising novel therapies. Garrido-Laguna I, Hidalgo M. Nat Rev Clin Oncol. 2015 Mar 31. doi: 10.1038/nrclinonc.2015.53.]. 
 
-- Considering text mining as an approach to have a closer look at related genes/proteins, chemical compounds, and diseases in documents that are relevant for pancreatic cancer shows a need for an easy-to-use software bridging the gap between processing data sets from PubMed effectively on a local machine and using the range of tools offered for natural language processing, e.g. by the BioCreative community. PubMed2Go offers such a solution.
+- Considering text mining as an approach to have a closer look at related genes/proteins, chemical compounds, and diseases in documents that are relevant for pancreatic cancer shows a need for an easy-to-use software bridging the gap between processing data sets from PubMed effectively on a local machine and using the range of tools offered for natural language processing, e.g. by the BioCreative community. PubMedPortable offers such a solution.
 
 - If the examples from this documentations are used, there will be around 745 MB of disk space needed. There are no other hardware requirements.
 
@@ -37,7 +37,7 @@ Download a Data Set
 
     - 16th April 2015: 23258 PubMed-IDs
 
-        - Some PubMed-IDs might change over time. Even for the given example list of PubMed-IDs for this documentation in "data/pubmed_result.txt" it is possible, that you receive another number of downloaded publications in your XML files as well as different outcomes in the ongoing analyes.
+        - Some PubMed-IDs might change over time. Even for the given example list of PubMed-IDs for this documentation in "data/pubmed_result.txt" it is possible, that you receive another number of downloaded publications in your XML files as well as different outcomes in the ongoing analyses.
 
     - The download of around 272 MB can take up to one hour depending on the time of day and internet connection. 
 
@@ -80,13 +80,13 @@ Installation
 Operating System
 ----------------
 
-- PubMed2Go was tested on Ubuntu and Fedora.
+- PubMedPortable was tested on Ubuntu and Fedora.
 
 ######
 Ubuntu
 ######
 
-- These are the packages that need to be installed to use PubMed2Go:
+- These are the packages that need to be installed to use PubMedPortable:
 
     - python>=2.7.3
 
@@ -174,7 +174,7 @@ Installation with Docker
 
 - Docker is similar to a virtual machine,  but it is easier to deploy and more efficient. It was tested in Ubuntu and Windows.
 
-- You can use the PubMed2Go image to create a PostgreSQL relational database and a Xapian full text index without installing the packages mentioned above in basically two steps.
+- You can use the PubMedPortable image to create a PostgreSQL relational database and a Xapian full text index without installing the packages mentioned above in basically two steps.
 
 - Install Docker - it was tested on Ubuntu (64-bit required):
 
@@ -184,7 +184,7 @@ Installation with Docker
 
         - https://docs.docker.com/installation/#installation
 
-- Run Docker with the PubMed2Go image:
+- Run Docker with the PubMedPortable image:
 
     - Create a folder on your local disk with a name of your choice.
 
@@ -218,11 +218,11 @@ Installation with Docker
 
     - "sudo docker run -d -v /home/<user_name>/<folder_of_your_choice>/:/export/ -p 9999:5432 bgruening/pubmed2go"
 
-- It is not recommended to run the PubMed2Go examples or to develop new scripts within the Docker container. If you want to modify the image, use the Docker documentation and this repository:
+- It is not recommended to run the PubMedPortable examples or to develop new scripts within the Docker container. If you want to modify the image, use the Docker documentation and this repository:
 
     - https://github.com/bgruening/docker-recipes/tree/master/pubmed2go
 
-- If you want to try the examples given in the sections 5 to 8, copy the Xapian directory from the <folder_of_your_choice> into the folder "PubMed2Go/full_text_index/xapian/" from "https://github.com/KerstenDoering/PubMed2Go" and run the Docker container in background. In case of using Docker, you can completely skip section 4.
+- If you want to try the examples given in the sections 5 to 8, copy the Xapian directory from the <folder_of_your_choice> into the folder "PubMedPortable/full_text_index/xapian/" from "https://github.com/KerstenDoering/PubMedPortable" and run the Docker container in background. In case of using Docker, you can completely skip section 4.
 
 
 ********************************************
@@ -306,7 +306,7 @@ Build up a Full Text Index with Xapian and Search It
 
         - This file contains manually chosen names of drugs, genes, proteins, and diseases related to pancreatic cancer.
 
-        - You can write your customized synonyms in a text file and can be passed to the Xapian while running RunXapian.py with the parameter "-p".
+        - User-provided synonyms can be directly stored in this file or saved in a new text document in the folder "synonyms". Subsequently, the parameter "-s" can be used to process this file.
 
     - The output in the command-line shows how many PubMed-IDs are indexed (23258) and how many synonyms are searched (86).
 
@@ -318,7 +318,7 @@ Build up a Full Text Index with Xapian and Search It
 
     - If you just want to search your synonyms, type in "python RunXapian.py" (Parameter "-x" turns on the indexing step, default is "False".)
 
-    - The default location for your full text index database folder is "PubMed2Go/full_text_index/xapian/<xapian2015>". You can change this location by using the parameter "-p".
+    - The default location for your full text index database folder is "PubMedPortable/full_text_index/xapian/<xapian2015>". You can change this location by using the parameter "-p".
 
 - For the given example, 10392 lines were generated in "results.csv". Run "python summary.py" to get two CSV files in directory "results". If you have chosen another filename as output from "RunXapian.py", you can do "python summary.py -f <name_of_input_file.csv>":
 
@@ -361,7 +361,9 @@ Xapian
 
     - "python search_title.py" shows that only a few lines of code are required to search only publication titles. This can be important as searching especially in publication titles puts more emphasis on the queried synonyms.
 
-        - While "RunXapian.py" searches only the exact phrase "pancreatic cancer", "search_title.py" searches for the stem "pancreat" and also finds the word "pancreatitis". You can change the querystring in the script search_title.py for phrase you want to search. 
+        - While "RunXapian.py" searches only the exact phrase "pancreatic cancer", "search_title.py" searches for the stem "pancreat" and also finds the word "pancreatitis". 
+
+    - The search terms in the scripts described in this subsection are hard-coded and have to be changed manually by the user.
 
         - It generates "Xapian_query_results.html" which shows the first 1000 of 18085 titles. Like this, many associated words are shown, e.g. "pancreatic ductal adenocarcinoma", "pancreatic juice", or "pancreatic diseases".
 
@@ -374,8 +376,6 @@ Xapian
         - An alternative would be the query with "ADJ/5", which reduces the number of 38 hits to 4 hits, because with this function, the order of search terms is fixed.
 
         - Here, the exact search is performed, again.
-
-        - These querries can be changed in the script search_near_title.py edit the inputs to the variables querystring1 and querystring2.
 
     - As it was done in "RunXapian.py" different index fields can be searched. 
 
@@ -484,30 +484,39 @@ Word Cloud
 
     - The word clouds generated here are based on the modified Xapian full text version searching only PubMed titles and abstract texts. Therefore, the files "RunXapian.py" and "SynonymParser.py" as well as the folder "synonyms" need to be copied from the folder "full_text_index" to the folder "full_text_index_title_text". The directories "xapian" and "results" have to be created, too. Afterwards, the command "python RunXapian.py -x" can be used, again. The numbers described in the last sections can differ slightly from the results generated here. The command "python summary.py" also has to executed.
 
-    - At first, the list of the 50 most frequently occurring words that were generated with "python summary.py" needs to be extracted in logarithmic scale to visualise the search terms appropriately. In the directory "PubMed2Go/plots/word_cloud", run the script "get_search_terms_log.py" to get the output file "counts_search_terms_log.csv". The highest frequency is shown by the small molecule gemcitabine. The parameter "-h" shows available parameters.
+    - At first, the list of the 50 most frequently occurring words that were generated with "python summary.py" needs to be extracted in logarithmic scale to visualise the search terms appropriately. In the directory "PubMedPortable/plots/word_cloud", run the script "get_search_terms_log.py" to get the output file "counts_search_terms_log.csv". The highest frequency is shown by the small molecule gemcitabine. The parameter "-h" shows available parameters.
 
     - The second step in this example is to find the 50 most frequently co-occurring words in texts that contain the search term gemcitabine. This can be done by running the command "python generate_surrounding_words_log.py". The stop word list that is used by this script was referenced by Hettne et al. [A dictionary to identify small molecules and drugs in free text. Bioinformatics. 2009 Nov 15;25(22):2983-91. doi: 10.1093/bioinformatics/btp535.]. It is provided in the folder "blacklist". Have a look at the links given in "stop_words.txt". These stop words were used to filter out terms with a very high frequency that have no substantial meaning for the content analysed. The numbers in the ouput file "counts_surrounding_words_log.csv" are given in logarithmic scale, too. 
+
+    - The search term "Gemcitabine" is hard-coded and needs to be changed directly in the script.
 
     - The plot can be genrated with the package "PyTagCloud". Please, follow the installation instructions on this GitHub page:
 
         - https://github.com/atizo/PyTagCloud
 
-    - For the first plot given here, use the command "python create_word_cloud.py -i counts_search_terms_log.csv -o cloud_search_terms.png". Adjust the parameters in the script create_word_cloud.py in the line create_tag_image, change parameter in size method of the output file to get the better cloud image.
+    - For the first plot given here, use the command "python create_word_cloud.py -i counts_search_terms_log.csv -o cloud_search_terms.png".
 
     .. image:: cloud_search_terms_700_w.png
 
-    - For the next figure, run "python create_word_cloud.py -i counts_surrounding_words_log.csv -o cloud_surrounding_words.png". Here also adjust the parameters in the script create_word_cloud.py in the line create_tag_image, change parameter in size method of the output file to get the better cloud image. 
+    - For the next figure, run "python create_word_cloud.py -i counts_surrounding_words_log.csv -o cloud_surrounding_words.png".
 
         .. image:: cloud_surrounding_words_500_w.png
 
     - The word clouds will look different every time the script is used.
+
+    - The figure area can be enlarged by changing the value of the parameter "size" in the function "create_tag_image()".
+
 
 
 ---------
 Pie Chart
 ---------
 
-    - In this subsection, the library "matplotlib" is needed to generate a pie chart. You can install it with the command "sudo apt-get install python-matplotlib" in ubuntu or with command "dnf install python-matplotlib" from Fedora 22 or with command "yum install python-matplotlib" in Fedora < 22.
+    - In this subsection, the library "matplotlib" is needed to generate a pie chart. 
+
+        - In Ubuntu, this library can be installed with the command "sudo apt-get install python-matplotlib".
+
+        - In Fedora 22, the command "dnf install python-matplotlib" can be used and in case of older Fedora versions, the command "yum install python-matplotlib".
 
     - By running "python pie_chart_countries.py", the picture "pie_chart_countries_publications.png" is produced from the input file "countries_pancreatic_cancer.csv".
 
@@ -536,13 +545,17 @@ Bar Chart
 
     .. image:: ../plots/bar_chart/KRAS_BRCA2_CDKN2A_pubmed.png
 
-    - Running "python get_years.py" generates the same kind of CSV files as provided by the browser search, but it uses the pancreatic cancer data set from this documentation by sending a query to the PubMed2Go PostgreSQL database.
+    - Running "python get_years.py" generates the same kind of CSV files as provided by the browser search, but it uses the pancreatic cancer data set from this documentation by sending a query to the PubMedPortable PostgreSQL database.
+
+        - Running this script with default parameters selects the user-based Xapian folder "full_text_index_title_text", but it can also be used with the results file in this documentation to reproduce the plot shown here:
+
+        - python get_years.py -x ../../full_text_index/results/results_from_documentation/ -p results.csv
 
     - Based on this, "create_bar_chart.py" without the parameter "-p" generates the bar chart "KRAS_BRCA2_CDKN2A.png".
 
     .. image:: ../plots/bar_chart/KRAS_BRCA2_CDKN2A.png
 
-    - The slopes of the BRCA2 and CDKN2A timelines are rather low compared to KRAS, but start much earlier in both plots. There is even a decrease shown for the last three years in the pancreatic cancer data set. The timeline of the gene KRAS shows an exponential growth. One reason for this is its role in the regulation of cell proliferation [Small molecule inhibition of the KRAS-PDEδ interaction impairs oncogenic KRAS signalling. Zimmermann et al. Nature. 2013 May 30;497(7451):638-42. doi: 10.1038/nature12205. Epub 2013 May 22.].
+    - The slopes of the BRCA2 and CDKN2A timelines are rather low compared to KRAS, but start earlier in both plots. The timeline of the gene KRAS shows an exponential growth. One reason for this is its role in the regulation of cell proliferation [Small molecule inhibition of the KRAS-PDEδ interaction impairs oncogenic KRAS signalling. Zimmermann et al. Nature. 2013 May 30;497(7451):638-42. doi: 10.1038/nature12205. Epub 2013 May 22.].
 
     - The review on OMIM mentioned in section 5 (http://omim.org/entry/260350?search=%22pancreatic%20cancer%22) provides more information with references showing why and how specific these genes are related to pancreatic cancer.
 
@@ -554,13 +567,17 @@ Examples for Using BioC and PubTator
 
     - https://github.com/2mh/PyBioC.
 
-- Copy the project folder "PyBioC/src/bioc" into your folder "PubMed2Go/BioC_export". This PyBioC directory is needed for the script "add_BioC_annotation.py", because it contains the Python source code for the BioC interface. 
+- Copy the project folder "PyBioC/src/bioc" into your folder "PubMedPortable/BioC_export". This PyBioC directory is needed for the script "add_BioC_annotation.py", because it contains the Python source code for the BioC interface. 
 
 - The idea of BioC is to use a standardised XML format that can be shared by the community to add annotations to scientific texts. Therefore, these documents can be exchanged and modified by anybody who uses the BioC interface.
 
 - The BioC XML format was introduced at BioCreative (http://www.biocreative.org/events/BCBioCuration2014/biocreative-text-mining-worksh) and also used at BioNLP (http://2013.bionlp-st.org/supporting-resources). The BioC project homepage contains several related software packages (http://bioc.sourceforge.net).
 
-- The file "pmid_list.txt" contains 21 PubMed-IDs that were taken from "PubMed2Go/data/pubmed_result.txt". It is used as default by the script "write_BioC_XML.py". If you do not have pubmed_result.txt file which was one of the alternative to get the dataset done in the section Download a Data set, you can get the ids by saving them to "pmid_list.txt" from the table tbl_abstract or/and tbl_medline_citation and also make sure you get some pubmed IDs from table tbl_mesh_heading so that the annotation works fine in the later example when you run the script add_BioC_annotation.py of the datbase in this case it is pancreatic_cancer_db. 
+- The file "pmid_list.txt" contains 21 PubMed-IDs that were taken from "PubMedPortable/data/pubmed_result.txt". It is used as default by the script "write_BioC_XML.py".
+
+    - The user can store his own list of PubMed-IDs in "pmid_list.txt" or create a new file. This user-provided list of PubMed-IDs can be loaded with the parameter "-i".
+
+    - New PubMed-IDs can be selected from the PubMedPortable PostgreSQL tables, e.g. pubmed.tbl_abstract, pubmed.tbl_medline_citation, or pubmed.tbl_mesh_heading.
 
 - This script also uses the file "BioC.dtd", which defines the structure of the XML file (taken from https://github.com/2mh/PyBioC).  Additionally, the file "Explanation.key" describes the semantics used for the annotations. In this example, MeSH terms are added as annotation XML elements to the basic BioC XML structure.
 
@@ -604,11 +621,93 @@ Examples for Using BioC and PubTator
 
     - http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools
 
-- They are described in the following PDF file as well as other software packages in chapter "TRACK 1 (BioC: Interoperability)"
+- They are described in the following PDF file as well as other software packages in chapter "TRACK 1 (BioC: Interoperability)":
 
     - http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV_vol1_.pdf
 
     - There are also other webservices included as well as BioC natural language preprocessing pipelines in C++ and Java (http://bioc.sourceforge.net).
+
+- PubTator can be used to completly extract genes, diseases, and chemicals from the pancreatic cancer data set. In the case of diseases and chemicals, there are not always identifiers provided for the recognised synonyms. The following commands lead to a new word cloud based on the 150 most frequently occurring entities:
+
+    - Gene and protein NER: python call_PubTator.py -i pubmed_result_complete.txt -o gene_complete.csv -t Gene -f PubTator
+
+    - Disease NER: python call_PubTator.py -i pubmed_result_complete.txt -o disease_complete.csv -t Disease -f PubTator
+
+    - Chemical NER: python call_PubTator.py -i pubmed_result_complete.txt -o chemical_complete.csv -t Chemical -f PubTator
+
+    - File concatenation: cat gene_complete.csv disease_complete.csv chemical_complete.csv > entities_complete.csv
+
+    - Get PubMed IDs, synonyms, and identifieres: python results_PubTator_format.py -i entities_complete.csv -o entities_formatted_identifiers.csv
+
+    - Count entities, summarised by their identifiers: python unify.py -i entities_formatted_identifiers.csv -o entities_formatted_identifiers_unified.csv
+
+    - Generate logarithmic values (first 150 entities): python get_search_terms_log.py -x ../../BioC_export/results_from_documentation -i entities_formatted_identifiers_unified.csv -o counts_entities_identifiers_log.csv
+
+    - Create word cloud: python create_word_cloud.py -i counts_entities_identifiers_log.csv -o cloud_entities_identifiers.png
+
+    .. image:: cloud_entities_identifiers_800.png
+
+    - This example is based on selecting one synonym per identifier. The script "results_PubTator_format.py" can be used with the parameter "-s" to extend the selection to all synonyms without using the identifiers. In this case, the step of using the script "unify.py" needs to be replaced with the script "summary.py" in the Xapian folder "full_text_index".
+
+- The bar chart shown with manually selected search terms can also be produced with the automatically identified entities from PubTator introduced in this section:
+
+    - python get_years.py -x ../../BioC_export/results_from_documentation/ -p entities_formatted_identifiers.csv -t Entrez_GeneID/search_terms_KRAS.txt -o KRAS
+
+    - python get_years.py -x ../../BioC_export/results_from_documentation/ -p entities_formatted_identifiers.csv -t Entrez_GeneID/search_terms_BRCA2.txt -o BRCA2
+
+    - python get_years.py -x ../../BioC_export/results_from_documentation/ -p entities_formatted_identifiers.csv -t Entrez_GeneID/search_terms_CDKN2A.txt -o CDKN2A
+
+    - python merge.py
+
+    - python create_bar_chart.py 
+
+    .. image:: ../plots/bar_chart/KRAS_CDKN2A_BRCA2.png
+
+    - Based on the search for a larger vocabulary from PubTator using Entrez GeneID numbers, CDKN2A shows more hits than BRCA2 and the identified numbers of abstracts are generally higher.
+
+- The same steps as performed with PubTator can be performed with other tools, too.
+
+    - The disease annotation step can be replaced by the stand-alone application DNorm from the tmBioC package (http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/ - link to DNorm):
+
+        - Write BioC document from pancreatic cancer data set (BioC directory): "python write_BioC_XML.py -i pubmed_result.txt -o pancreatic_cancer_BioC.xml"
+
+        - Add DNorm annotatons (in download directory): ./RunDNorm_BioC.sh config/banner_NCBIDisease_TEST.xml data/CTD_diseases.tsv output/simmatrix_NCBIDisease_e4.bin pancreatic_cancer_BioC.xml pancreatic_cancer_BioC_DNorm.xml 
+
+        - This command can be used to create the "file pancreatic_cancer_BioC_DNorm.xml" (not uploaded).
+
+        - The script "read_BioC_annotations.py" shows the basic commands how to iterate over MeSH term annotations in BioC format from the example mentioned earlier, using PubMedPortable and PubTator.
+
+        - The script "BioC_to_CSV.py" is based on the code in "read_BioC_annotations.py" and extracts the DNorm annotations in "file pancreatic_cancer_BioC_DNorm.xml" to a CSV file "DNorm_formatted.csv (not uploaded). The script needs the DNorm DTD file (in the DNorm download directory). Copy it to you execution folder and rename it to "BioC_DNorm.dtd". If this file causes an error in the PyBioC API, replace the raise command in bioc/bioc_reader.py by a print command.
+
+    - Genes and proteins can be annotated with GeneTUKit, a software for gene normalisation which was ranked among the best-performing tools in the BioCreative III challenge in 2010.
+
+    - Unfortunately, the source code is not available, but there is a GitHub repository wrapping PubMedPortable articles into a pseudo XML format used by the software (https://github.com/ElhamAbbasian/GeneTUKit-Pipeline).
+
+    - Using the list of PubMed IDs from the PubMedPortable documentation and following the first three steps in the GeneTUKit pipeline generates a file pmid_geneid_syn.csv.
+
+    - For the output format used to generate the word cloud, the orginal line to write the output in the script filter_out_genetukit_output.py can be changed to 'outfile.write(pmid + "\t" + temp[1].split("|")[0] + "\t" + temp[0] + "\n")'. Multiple synonyms with the same Entrez Gene-ID number are separeted with a pipe ("|") and only the first synonym is needed for the task here. Furthermore, the order from the file name "PubMed-ID-GeneID-Synonym" is changed to "PubMed-ID-Synonym-GeneID" by exchanging the elements temp[0] and temp[1].
+
+    - After file concatenation (single files not uploaded: cat GeneTUKit_formatted.csv DNorm_formatted.csv chemical_formatted.csv > entities_complete_3tools.csv), the steps to generate the word cloud can be executed as already described in the PubTator example. 
+
+        - python unify.py -i entities_complete_3tools.csv -o entities_complete_3tools_unified.csv
+
+        - get_search_terms_log.py -x ../../BioC_export/results_from_documentation -i entities_complete_3tools_unified.csv -o counts_entities_identifiers_log_3tools.csv
+
+        - create_word_cloud.py -i counts_entities_identifiers_log_3tools.csv -o cloud_3tools.png
+
+        .. image:: cloud_3tools_800.png
+
+    - The same is possible for the bar chart example.
+
+        - The Entrez GeneID numbers were extracted from the file GeneTUKit_formatted.csv with the script get_search_term_identifiers.py (KRAS gene example hard-coded).
+
+        - This has to be done with the other two genes CDKN2A and BRCA2, too. The steps "python merge.py" and "python create_bar_chart.py" lead to the new bar chart "KRAS_CDKN2A_BRCA2.png", manually renamed to "KRAS_CDKN2A_BRCA2_3tools.png" to be distinguishable from the PubTator example. 
+
+        .. image:: ../plots/bar_chart/KRAS_CDKN2A_BRCA2_3tools.png
+
+        - This approach leads to a higher number of publications for each gene, but shows basically the same tendencies as in the PubTator example.
+
+    - The example of using PubTator, DNorm, and GeneTUKit illustrates, that the infrastructure of PubMedPortable can be easily extended to combine different data formats (PubTator, BioC, and pseudo XML format), being independent from a Web service, but making use of it, if desired.
 
 
 *******
@@ -617,7 +716,7 @@ Contact
 
 - Please, write an e-mail, if you have questions, feedback, improvements, or new ideas:
 
-    - kersten.doering@pharmazie.uni-freiburg.de
+    - kersten.doering@gmail.com
 
 - If you are interested in related projects, visit our working group's homepage:
 
@@ -627,4 +726,4 @@ Contact
 License
 -------
 
-- PubMed2Go is published with an ISC license given in "license.txt".
+- PubMedPortable is published with an ISC license given in "license.txt".
