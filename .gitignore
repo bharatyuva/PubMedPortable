@@ -105,7 +105,7 @@ ENV/
 .ropeproject
 
 *.pyc
-data/pubmed_result_scaffolds.xml
+data/	pubmed_result_scaffolds.xml
 data/scaffolds_data/
 full_text_index/xapian
 full_text_index_title_text/xapian
