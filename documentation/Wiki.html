@@ -36,8 +36,18 @@
 <li><a href="#bar-chart"><span class="toc-section-number">7.3</span> Bar Chart</a></li>
 </ul></li>
 <li><a href="#examples-for-using-bioc-and-pubtator"><span class="toc-section-number">8</span> Examples for Using BioC and PubTator</a></li>
-<li><a href="#contact"><span class="toc-section-number">9</span> Contact</a><ul>
-<li><a href="#license"><span class="toc-section-number">9.1</span> License</a></li>
+<li><a href="#indexing-of-pmc-articles"><span class="toc-section-number">9</span> Indexing of PMC Articles</a><ul>
+<li><a href="#introduction-1"><span class="toc-section-number">9.1</span> Introduction</a></li>
+<li><a href="#get-pmc-files"><span class="toc-section-number">9.2</span> Get PMC Files</a></li>
+<li><a href="#create-tables-and-xapian-index"><span class="toc-section-number">9.3</span> Create Tables and Xapian Index</a></li>
+</ul></li>
+<li><a href="#named-entity-recognition-tools"><span class="toc-section-number">10</span> Named Entity Recognition Tools</a></li>
+<li><a href="#lucene-as-an-alternative-to-xapian"><span class="toc-section-number">11</span> Lucene as an Alternative to Xapian</a><ul>
+<li><a href="#installation-1"><span class="toc-section-number">11.1</span> Installation</a></li>
+<li><a href="#usage"><span class="toc-section-number">11.2</span> Usage</a></li>
+</ul></li>
+<li><a href="#contact"><span class="toc-section-number">12</span> Contact</a><ul>
+<li><a href="#license"><span class="toc-section-number">12.1</span> License</a></li>
 </ul></li>
 </ul>
 </div>
@@ -64,6 +74,7 @@
 <blockquote>
 <ul>
 <li>Some PubMed-IDs might change over time. Even for the given example list of PubMed-IDs for this documentation in “data/pubmed_result.txt” it is possible, that you receive another number of downloaded publications in your XML files as well as different outcomes in the ongoing analyses.</li>
+<li>You can also use PubMedPortable for daily updates, but the parser will not include PubMed IDs which are already contained in the database. Therefore, we recommend to generate a completely new database and a new full text index once a year.</li>
 </ul>
 </blockquote></li>
 <li>The download of around 272 MB can take up to one hour depending on the time of day and internet connection.</li>
@@ -138,7 +149,7 @@
 <li><p>To install the Fedora packages use the following command. It will install all required packages:</p>
 <blockquote>
 <ul>
-<li>“sudo -E yum install python python-xappy python-sqlalchemy python-psycopg2 postgresql postgresql-server postgresql-contrib”</li>
+<li>“sudo -E dnf install python python-xappy python-sqlalchemy python-psycopg2 postgresql postgresql-server postgresql-contrib”</li>
 </ul>
 </blockquote></li>
 <li><p>To enable PostgreSQL in Fedora, use the following steps:</p>
@@ -169,7 +180,7 @@
 <li>“grep postgres /var/log/audit/audit.log | audit2allow -M mypol”</li>
 </ul>
 </blockquote></li>
-<li><p>Then you can do this:</p>
+<li><p>Then you can do this (this is also required upto Fedora 23):</p>
 <blockquote>
 <ul>
 <li>“sudo semodule -i mypol.pp”</li>
@@ -214,11 +225,11 @@
 <li><p>Install Docker - it was tested on Ubuntu (64-bit required):</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.docker.com/installation/ubuntulinux/" class="uri">https://docs.docker.com/installation/ubuntulinux/</a></li>
+<li><a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/" class="uri">https://docs.docker.com/engine/installation/linux/ubuntulinux/</a></li>
 <li><p>There are many different operating systems supported:</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.docker.com/installation/#installation" class="uri">https://docs.docker.com/installation/#installation</a></li>
+<li><a href="https://docs.docker.com/engine/installation/" class="uri">https://docs.docker.com/engine/installation/</a></li>
 </ul>
 </blockquote></li>
 </ul>
@@ -232,7 +243,7 @@
 <li><p>Open a terminal and type in this command:</p>
 <blockquote>
 <ul>
-<li>“sudo docker run -d -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9999:5432 bgruening/pubmed2go”</li>
+<li>“sudo docker run -d -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9999:5432 bgruening/pubmedportable”</li>
 <li>This will create the PostgreSQL folder as well as the full text index database folder within the &lt;folder_of_your_choice&gt;.</li>
 <li>You can see that Docker is running by typing in “sudo docker ps”. This will show a randomly generated name for your process.</li>
 <li>Stopping Docker is possible by doing “sudo docker stop &lt;name&gt;”.</li>
@@ -245,9 +256,17 @@
 <li><p>If you have created another folder with a name &lt;folder_of_your_choice&gt; and the directory “import_data”, you can create another database on port “9998” and another full text index with different data there:</p>
 <blockquote>
 <ul>
-<li>“sudo docker run -d -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9998:5432 bgruening/pubmed2go”</li>
+<li>“sudo docker run -d -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9998:5432 bgruening/pubmedportable”</li>
 </ul>
 </blockquote></li>
+<li><p>You can use other parameters to open the docker container first, e.g. if you want to modify software versions:</p>
+<blockquote>
+<ul>
+<li>“sudo docker run -i -t -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9998:5432 bgruening/pubmedportable /bin/bash”</li>
+<li>“startup” will initialize the building process in your docker container.</li>
+</ul>
+</blockquote></li>
+<li>If you want to check which version of a software is installed, you open your container first and run “pip freeze” or you can execute e.g. “sudo docker run -it bgruening/pubmedportable python -c ‘import sqlalchemy; print sqlalchemy.__version__’”.</li>
 <li>In case of replacing or creating a database on a port that is already used, delete the complete directory &lt;folder_of_your_choice&gt; and repeat the configuration steps.</li>
 </ul>
 </blockquote></li>
@@ -257,16 +276,24 @@
 <li><p>This also means that you need a default PostgreSQL installation on your operating system. Restart a closed Docker session on port “9999” with the command:</p>
 <blockquote>
 <ul>
-<li>“sudo docker run -d -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9999:5432 bgruening/pubmed2go”</li>
+<li>“sudo docker run -d -v /home/&lt;user_name&gt;/&lt;folder_of_your_choice&gt;/:/export/ -p 9999:5432 bgruening/pubmedportable”</li>
 </ul>
 </blockquote></li>
 <li><p>It is not recommended to run the PubMedPortable examples or to develop new scripts within the Docker container. If you want to modify the image, use the Docker documentation and this repository:</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/bgruening/docker-recipes/tree/master/pubmed2go" class="uri">https://github.com/bgruening/docker-recipes/tree/master/pubmed2go</a></li>
+<li><a href="https://github.com/bgruening/docker-recipes/tree/master/pubmedportable" class="uri">https://github.com/bgruening/docker-recipes/tree/master/pubmedportable</a></li>
 </ul>
 </blockquote></li>
 <li>If you want to try the examples given in the sections 5 to 8, copy the Xapian directory from the &lt;folder_of_your_choice&gt; into the folder “PubMedPortable/full_text_index/xapian/” from “<a href="https://github.com/KerstenDoering/PubMedPortable" class="uri">https://github.com/KerstenDoering/PubMedPortable</a>” and run the Docker container in background. In case of using Docker, you can completely skip section 4.</li>
+<li><p>During the revision process of the PubMedPortable publication, the original name PubMed2Go was changed to PubMedPortable.</p>
+<blockquote>
+<ul>
+<li>The bgruening GitHub repository name changed to pubmedportable, but the scripts and the generated outputs still contain the name pubmed2go.</li>
+<li>The docker container bgruening/pubmed2go still exists and contains the same version as bgruening/pubmedportable.</li>
+<li>Users with an older version of the docker container should execute “sudo docker pull bgruening/pubmed2go” to update their version.</li>
+</ul>
+</blockquote></li>
 </ul>
 <h1 id="build-up-a-relational-database-in-postgresql"><span class="header-section-number">4</span> Build up a Relational Database in PostgreSQL</h1>
 <ul>
@@ -323,6 +350,15 @@
 </blockquote></li>
 <li>Now, a schema “pubmed” exists in your database “pancreatic_cancer_db” that contains all abstracts, titles, authors, etc. More information will be given in section 5, containing SQL queries and small programming examples.</li>
 <li>The schema is described in the file “documentation/PostgreSQL_database_schema.html” which was generated with DbSchema (<a href="http://www.dbschema.com/download.html" class="uri">http://www.dbschema.com/download.html</a>).</li>
+<li><p>If you want to extend the database schema in terms of additional columns or tables, you can have a look at this diff in the GitHub repository:</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/KerstenDoering/PubMedPortable/commit/99f39f385c83d121422d1c48694c7fb2e6e421b3" class="uri">https://github.com/KerstenDoering/PubMedPortable/commit/99f39f385c83d121422d1c48694c7fb2e6e421b3</a></li>
+<li>Consider the example of UI fields (MeSH IDs) for chemical substances.</li>
+<li>The column needs to be initialised (line 220 and 225 in PubMedDB.py) and the parser needs to get this XML field (line 309 in PubMedParser.py).</li>
+<li>The steps how to create a new table with adapted columns can be seen in the example of creating a class OtherID and OtherAbstract from the earlier existing class Other.</li>
+</ul>
+</blockquote></li>
 </ul>
 <h1 id="build-up-a-full-text-index-with-xapian-and-search-it"><span class="header-section-number">5</span> Build up a Full Text Index with Xapian and Search It</h1>
 <ul>
@@ -388,6 +424,7 @@
 <ul>
 <li><a href="http://xapian.org/docs/admin_notes.html#merging-databases" class="uri">http://xapian.org/docs/admin_notes.html#merging-databases</a></li>
 <li>xapian-compact -m &lt;all input directories to be compressed, separated by space&gt; &lt;name of outcoming folder with complete database&gt;</li>
+<li>Using Ubuntu, this tool might have to be installed additionally with “sudo apt install xapian-tools”.</li>
 </ul>
 </blockquote></li>
 </ul>
@@ -679,7 +716,7 @@
 <li><p>They are described in the following PDF file as well as other software packages in chapter “TRACK 1 (BioC: Interoperability)”:</p>
 <blockquote>
 <ul>
-<li><a href="http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV_vol1_.pdf" class="uri">http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV_vol1_.pdf</a></li>
+<li><a href="http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV\_vol1\_.pdf" class="uri">http://www.biocreative.org/media/store/files/2013/ProceedingsBioCreativeIV\_vol1\_.pdf</a></li>
 <li>There are also other webservices included as well as BioC natural language preprocessing pipelines in C++ and Java (<a href="http://bioc.sourceforge.net" class="uri">http://bioc.sourceforge.net</a>).</li>
 </ul>
 </blockquote></li>
@@ -755,7 +792,308 @@
 </ul>
 </blockquote></li>
 </ul>
-<h1 id="contact"><span class="header-section-number">9</span> Contact</h1>
+<h1 id="indexing-of-pmc-articles"><span class="header-section-number">9</span> Indexing of PMC Articles</h1>
+<h2 id="introduction-1"><span class="header-section-number">9.1</span> Introduction</h2>
+<ul>
+<li>The page <a href="ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/" class="uri">ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/</a> contains all downloadable files used in this section.</li>
+<li><p>Explanations for the PMC FTP service can be found here:</p>
+<blockquote>
+<p><a href="http://www.ncbi.nlm.nih.gov/pmc/tools/ftp/" class="uri">http://www.ncbi.nlm.nih.gov/pmc/tools/ftp/</a></p>
+</blockquote></li>
+<li>The four files articles.txt.0-9A-B.tar.gz, articles.txt.C-H.tar.gz, articles.txt.I-N.tar.gz, and articles.txt.O-Z.tar.gz contain all available PMC full text articles in plain text format.</li>
+<li>In more than half of all PMC articles, the authors did not allow a download of their article in text format. This is also true for the available XML downloads and the ID Converter API (<a href="http://www.ncbi.nlm.nih.gov/pmc/tools/id-converter-api/" class="uri">http://www.ncbi.nlm.nih.gov/pmc/tools/id-converter-api/</a>).</li>
+<li>This section considers the insertion of a PMC-PubMed-ID mapping of all available IDs in PostgreSQL, the indexing of all downloaded PMC articles in Xapian, and the insertion of the articles without further formatting in PostgreSQL.</li>
+<li><p>The approach can be extended with a PMC XML parser, e.g. this one:</p>
+<blockquote>
+<ul>
+<li><a href="https://sourceforge.net/projects/pmcparser" class="uri">https://sourceforge.net/projects/pmcparser</a></li>
+</ul>
+</blockquote></li>
+<li>If the user does not need the texts in PostgreSQL, they can also be stored directly in a text field in the Xapian index.</li>
+<li>The file file_list.txt contains a mapping of the downloaded article names to PMC IDs (<a href="http://www.ncbi.nlm.nih.gov/pmc/tools/ftp/" class="uri">http://www.ncbi.nlm.nih.gov/pmc/tools/ftp/</a>), which is also stored in PostgreSQL.</li>
+</ul>
+<h2 id="get-pmc-files"><span class="header-section-number">9.2</span> Get PMC Files</h2>
+<ul>
+<li><p>Create a directory files in your PMC folder in the GitHub project and download the 4 PMC article archives, if you want to index all of them as shown here for the first gzip file:</p>
+<blockquote>
+<ul>
+<li>wget <a href="ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.txt.0-9A-B.tar.gz" class="uri">ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.txt.0-9A-B.tar.gz</a></li>
+</ul>
+</blockquote></li>
+<li><p>Unzip the files and remove the source files:</p>
+<blockquote>
+<ul>
+<li>gunzip articles.txt.0-9A-B.tar.gz</li>
+<li>tar -xf articles.txt.0-9A-B.tar</li>
+<li>rm articles.txt.0-9A-B.tar</li>
+</ul>
+</blockquote></li>
+<li>Each gzip file will have an approximate size of 4.2 GB [2015-04-22]</li>
+<li><p>Download the mapping of PMC IDs to PubMed IDs in your PMC folder:</p>
+<blockquote>
+<ul>
+<li>wget <a href="ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/PMC-ids.csv.gz" class="uri">ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/PMC-ids.csv.gz</a></li>
+<li>gunzip PMC-ids.csv.gz</li>
+</ul>
+</blockquote></li>
+</ul>
+<h2 id="create-tables-and-xapian-index"><span class="header-section-number">9.3</span> Create Tables and Xapian Index</h2>
+<ul>
+<li><p>Create a table tbl_pmcid_name_pmid in your PostgreSQL schema public:</p>
+<blockquote>
+<ul>
+<li>psql -h localhost -d pancreatic_cancer_db -U parser -f create_pmcid_pmid_table.sql</li>
+</ul>
+</blockquote></li>
+<li><p>Insert PMC ID mapping in your PostgreSQL database with PubMed IDs, if contained (not all PMC IDs will contain a PubMed ID mapping - nevertheless, it can be checked whether the PubMed ID is referenced to a PMC ID with this table):</p>
+<blockquote>
+<ul>
+<li>python insert_PMC_ID_PubMed_ID_mapping.py</li>
+</ul>
+</blockquote></li>
+<li><p>If you want to count the number of uploaded PMC IDs, use the following command, e.g. in PGAdmin:</p>
+<blockquote>
+<ul>
+<li>select count(*) from tbl_pmcid_pmid;</li>
+</ul>
+</blockquote></li>
+<li><p>Insert PMC ID mapping from file_list.txt, which also contains the file names from the downloaded archives:</p>
+<blockquote>
+<ul>
+<li>psql -h localhost -d pancreatic_cancer_db -U parser -f create_pmcid_name_pmid_table.sql</li>
+<li>python insert_PMC_ID_Name_PubMed_ID_mapping.py</li>
+</ul>
+</blockquote></li>
+<li><p>Check the total number of downloaded text files from the archives. This number will be much smaller than the number of PMC IDs in tbl_pmicid_pmid:</p>
+<blockquote>
+<ul>
+<li>select count(*) from tbl_pmcid_name_pmid;</li>
+</ul>
+</blockquote></li>
+<li><p>Build the Xapian index - this might take a few hours in total, depending on the following options. Create a folder xapian first:</p>
+<blockquote>
+<ul>
+<li>mkdir xapian</li>
+<li>Set the boolean flag of the variable use_psql to True in line 35 in index.py (default is True) if you want to store your PMC texts in the PostgreSQL table tbl_pmcid_text, otherwise an extra Xapian data field will be used to save the file content, e.g. to read it after receiving search results.</li>
+<li><p>If you want to use the PostgreSQL database, create the table tbl_pmcid_text first:</p>
+<blockquote>
+<ul>
+<li>psql -h localhost -d pancreatic_cancer_db -U parser -f create_pmcid_text_table.sql</li>
+<li>The indexing process for the first of four files took over an hour with one CPU core (2,83 GHz and 8 GB RAM). Setting use_psql to True or False resulted in a similar runtime.</li>
+</ul>
+</blockquote></li>
+<li>python index.py</li>
+</ul>
+</blockquote></li>
+<li><p>Before the index can be used completely, it has to be merged with the compact-tool already mentioned earlier in this documentation. The following command will generate a folder xapian_PMC_complete in your PMC directory:</p>
+<blockquote>
+<ul>
+<li>python generate_xapian_compact_command.py</li>
+<li>It is also possible to include only some selected journals in the search by using the IDs generated during the indexing process (ids.txt).</li>
+</ul>
+</blockquote></li>
+<li><p>To search in the index with showing identified texts, run the following script with the parameter use_psql set to True (default case, line 24) and verbose set to True (default False, line 22). Create a result directory first. Similar to the already described search procedure in the Xapian chapter of this documentation, a list of synonyms can be used (synonyms/synonyms.txt):</p>
+<blockquote>
+<ul>
+<li>search.py</li>
+<li>This script rather serves as a guidline how to get the search results and should be adapted to the methods already described.</li>
+</ul>
+</blockquote></li>
+<li>The scripts which generated the results described in the other chapters can be adapted to be used with the data processed in this section.</li>
+</ul>
+<h1 id="named-entity-recognition-tools"><span class="header-section-number">10</span> Named Entity Recognition Tools</h1>
+<ul>
+<li>The following table shows named entity recognition tools. Many stand-alone and web service applications are available. Therefore, the overview cannot be considered as complete.</li>
+<li>There will be new publications from every BioCreative challenge (<a href="http://www.biocreative.org" class="uri">http://www.biocreative.org</a>).</li>
+<li>The first 5 applications can be used easily as a web service with the PubMedPortable script call_PubTator.py (Wei et al.).</li>
+<li>DNORM was used as a stand-alone tool in the wiki section “Examples for Using BioC and PubTator”.</li>
+<li>TaggerOne can be trained to be used highlight any entity type. The publication shows benchmarked results for chemicals and diseases.</li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col width="19%" />
+<col width="32%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Tool Name</th>
+<th align="left">Entities</th>
+<th align="left">Availability</th>
+<th align="left">Authors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/#GNormPlus">GNormPlus</a></td>
+<td align="left">genes/proteins</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="http://dx.doi.org/10.1155/2015/918710">Wei et al., 2015</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/#DNorm">DNorm</a></td>
+<td align="left">diseases/species/taxonomy</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/bioinformatics/btt474">Leaman et al., 2013</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/#tmChem">tmChem</a></td>
+<td align="left">drugs/chemicals</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1186/1758-2946-7-S1-S3">Leaman et al., 2014</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/#tmVar">tmVar</a></td>
+<td align="left">mutations/diseases</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/bioinformatics/btt156">Wei et al., 2013</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/#SR4GN">SR4GN</a></td>
+<td align="left">species/genes</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="http://dx.doi.org/10.1371/journal.pone.0038460">Wei et al., 2012</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://gnat.sourceforge.net/">GNAT</a></td>
+<td align="left">genes/proteins</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/bioinformatics/btr455">Hakenberg, J. et al. 2010</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://linnaeus.sourceforge.net/">LINNAEUS</a></td>
+<td align="left">species/taxonomy</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1186/1471-2105-11-85">Gerner et al., 2010</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://sourceforge.net/projects/taxongrab/">TaxonGrab</a></td>
+<td align="left">species/taxonomy</td>
+<td align="left">stand-alone tool</td>
+<td align="left">Moritz et al., 2005_</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://www.ebi.ac.uk/webservices/whatizit/helpws.jsp;jsessionid=9243A71262F8873CA40FE4DD4DDB18A0">Whatizit</a></td>
+<td align="left">species/taxonomy</td>
+<td align="left">web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/bioinformatics/btm557">Rebholz-Schuhmann et al., 2008</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://bionlp.sourceforge.net/">MutationFinder(BioNLP)</a></td>
+<td align="left">mutations</td>
+<td align="left">standalone tool</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/bioinformatics/btm235">Caporaso et al., 2007</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://ctdbase.org/">CTD</a></td>
+<td align="left">genes/proteins/chemicals/protein interactions</td>
+<td align="left">web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/database/bau050">Wiegers et al., 2014</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://gnat.sourceforge.net/">Reflect</a></td>
+<td align="left">proteins/chemicals</td>
+<td align="left">stand-alone tool and web service</td>
+<td align="left"><a href="https://dx.doi.org/doi:10.1038/nbt0609-508">Pafilis et al., 2009</a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/tmTools/demo/TaggerOne/demo.cgi">TaggerOne</a></td>
+<td align="left">chemicals/diseases</td>
+<td align="left">web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/bioinformatics/btw343">Leanman et al., 2016</a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://clinicalnlptool.com/cdr/cdr.html">CD-REST</a></td>
+<td align="left">chemicals/diseases</td>
+<td align="left">web service</td>
+<td align="left"><a href="https://dx.doi.org/10.1093/database/baw036">Xu et al., 2016</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="lucene-as-an-alternative-to-xapian"><span class="header-section-number">11</span> Lucene as an Alternative to Xapian</h1>
+<ul>
+<li>There is no contradiction in using Xapian or Lucene. We wanted to build a full text index with only a few lines of code in Python, based on an easy installation. Therefore, we chose Xapian.</li>
+<li>Our workflows and use cases were generated with Python code. Lucene can also be called in Python via PyLucene.</li>
+<li><p>To illustrate this modularity, we created a minimalistic indexing and searching example. The examples were inspired by the following sources:</p>
+<blockquote>
+<ul>
+<li>IndexFiles.py, SearchFiles.py, and FacetExample.py in <a href="http://svn.apache.org/viewvc/lucene/pylucene/trunk/samples" class="uri">http://svn.apache.org/viewvc/lucene/pylucene/trunk/samples</a></li>
+<li><a href="http://graus.co/blog/pylucene-4-0-in-60-seconds-tutorial" class="uri">http://graus.co/blog/pylucene-4-0-in-60-seconds-tutorial</a></li>
+<li><a href="http://blog.intelligencecomputing.io/tags/pylucene" class="uri">http://blog.intelligencecomputing.io/tags/pylucene</a></li>
+</ul>
+</blockquote></li>
+<li>Of course, you are free to use Lucene completely in Java - this is just a basic tutorial to simplify the first steps in indexing and searching with PyLucene.</li>
+</ul>
+<h2 id="installation-1"><span class="header-section-number">11.1</span> Installation</h2>
+<ul>
+<li>The installation steps on the official PyLucene page (<a href="http://lucene.apache.org/pylucene/install.html" class="uri">http://lucene.apache.org/pylucene/install.html</a>) did not work straigt forward in Ubuntu 16 LTS.</li>
+<li>This section is considered as an alternative to Xapian. Therefore, the installation steps are not part of the general introduction to installation requirements of PubMedPortable.</li>
+<li><p>Install the following packages using the official Ubuntu sources (“apt-get install” or “sudo synaptic”).</p>
+<blockquote>
+<ul>
+<li>jcc</li>
+<li>python-all-dev</li>
+</ul>
+</blockquote></li>
+<li>The official PyLucene instruction state that you should use the JCC SVN version (<a href="http://lucene.apache.org/pylucene/jcc/install.html" class="uri">http://lucene.apache.org/pylucene/jcc/install.html</a>).</li>
+<li><p>If the Ubuntu default package “jcc” does not work, try the following steps (as described in the official documentation).</p>
+<blockquote>
+<ul>
+<li>svn jcc</li>
+<li>pushd jcc (changes into your jcc directory)</li>
+<li>edit your java path if your receive an error (e.g. ‘linux2’: ‘/usr/lib/jvm/java-8-openjdk-amd64’,)</li>
+<li>python setup.py build</li>
+<li>sudo python setup.py install</li>
+<li>popd</li>
+</ul>
+</blockquote></li>
+<li>Download PyLucene, e.g. from <a href="http://apache.lauf-forum.at/lucene/pylucene" class="uri">http://apache.lauf-forum.at/lucene/pylucene</a> (version 4.9.0.0 used in this section).</li>
+<li><p>Change into unzipped directory and edit Makefile by deleting the comment characters in lines 93-97:</p>
+<blockquote>
+<p>PREFIX_PYTHON=/usr</p>
+<p>ANT=JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 /usr/bin/ant</p>
+<p>PYTHON=$(PREFIX_PYTHON)/bin/python</p>
+<p>JCC=$(PYTHON) -m jcc –shared</p>
+<p>NUM_FILES=8</p>
+</blockquote></li>
+<li><p>Execute the following commands in your terminal (in the PyLucene folder):</p>
+<blockquote>
+<ul>
+<li>make</li>
+<li>make test (any errors?)</li>
+<li>sudo make install</li>
+</ul>
+</blockquote></li>
+<li>You should be able to do “import lucene” now, e.g. in IPython.</li>
+</ul>
+<h2 id="usage"><span class="header-section-number">11.2</span> Usage</h2>
+<ul>
+<li>The PubMedPortable examples index.py and search.py can be modified to be included in the script “PubMedXapian.py” using Xapian with the functions “buildIndexWithArticles(articles)” and “findPMIDsWithSynonyms(synonyms)”.</li>
+<li>The script index.py creates a Lucene folder “lucene_index.Index” and adds two documents with the fields “Title” and “Abstract”.</li>
+<li>If your installation worked fine, you will see the output “Indexed 2 documents.”.</li>
+<li><p>The option “Field.Store.YES” can be considered analogously to the Xapian option “xappy.FieldActions.STORE_CONTENT” in PubMedXapian.py.</p>
+<blockquote>
+<ul>
+<li>Enabling this option means, that you can inspect the source of your matching document directly.</li>
+<li>This increases your index size. Alternatively, you can query the sources from your PostgreSQL database.</li>
+</ul>
+</blockquote></li>
+<li>The script search.py shows two queries. The first query matches both documents, because it searches with “OR” in the fields “Title” and “Abstract”.</li>
+<li>The second query in search.py matches only the first document because of the condition “AND”.</li>
+<li><p>You should see the following output:</p>
+<blockquote>
+<p>Searching for ‘text’ with OR two match both documents:</p>
+<p>2 total matching documents.</p>
+<p>title: text of title1 , abstract: abstract1 has many words, e.g. hellow world can be the text</p>
+<p>title: title2 , abstract: text of abstract2</p>
+<p>Searching for ‘text’ with OR two match only the first document:</p>
+<p>1 total matching documents.</p>
+<p>title: text of title1 , abstract: abstract1 has many words, e.g. hellow world can be the text</p>
+</blockquote></li>
+<li>The usage of PyLucene seems to be simple as well, but the installation can be more difficult. Considering advanced tasks in PyLucene, Java knowledge is clearly an advantage to find and make use of the range of packages and functions.</li>
+</ul>
+<h1 id="contact"><span class="header-section-number">12</span> Contact</h1>
 <ul>
 <li><p>Please, write an e-mail, if you have questions, feedback, improvements, or new ideas:</p>
 <blockquote>
@@ -775,7 +1113,7 @@ document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+e+'<\
 </ul>
 </blockquote></li>
 </ul>
-<h2 id="license"><span class="header-section-number">9.1</span> License</h2>
+<h2 id="license"><span class="header-section-number">12.1</span> License</h2>
 <ul>
 <li>PubMedPortable is published with an ISC license given in “license.txt”.</li>
 </ul>

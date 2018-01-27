@@ -176,7 +176,7 @@ class MedlineParser:
                     for subelem in elem.find("PubDate"):
                         if subelem.tag == "MedlineDate":
                             if len(subelem.text) > 40:
-                                DBJournal.medline_date = subelem.text[:37]
+                                DBJournal.medline_date = subelem.text[:37] + "..."
                             else:
                                 DBJournal.medline_date = subelem.text
                         elif subelem.tag == "Year":
@@ -237,13 +237,15 @@ class MedlineParser:
                             if author.find("ForeName") != None and not len(author.find("ForeName").text) > 100:
                                 DBAuthor.fore_name = author.find("ForeName").text
                             elif author.find("ForeName") != None and len(author.find("ForeName").text) > 100:
-                                DBAuthor.fore_name = author.find("ForeName").text[0:100]
+                                DBAuthor.fore_name = author.find("ForeName").text[0:97] + "..."
                         except:
                             pass
                         if author.find("Initials") != None:
                             DBAuthor.initials = author.find("Initials").text
-                        if author.find("Suffix") != None:
+                        if author.find("Suffix") != None and not len(author.find("Suffix").text) > 20:
                             DBAuthor.suffix = author.find("Suffix").text
+                        elif author.find("Suffix") != None and len(author.find("Suffix").text) > 20:
+                            DBAuthor.suffix = author.find("Suffix").text[0:17] + "..."
                         if author.find("CollectiveName") != None:
                             DBAuthor.collective_name = author.find("CollectiveName").text
 
@@ -306,7 +308,7 @@ class MedlineParser:
                             DBChemical.registry_number = chemical.find("RegistryNumber").text
                         if chemical.find("NameOfSubstance") != None:
                             DBChemical.name_of_substance = chemical.find("NameOfSubstance").text
-
+                            DBChemical.substance_ui = chemical.find("NameOfSubstance").attrib['UI']
                         DBCitation.chemicals.append(DBChemical)
 
                 if elem.tag == "GeneSymbolList":
@@ -316,27 +318,29 @@ class MedlineParser:
                         if len(genes.text) < 40:
                             DBGeneSymbol.gene_symbol = genes.text
                         else:
-                            DBGeneSymbol.gene_symbol = genes.text[:36] + '...'
+                            DBGeneSymbol.gene_symbol = genes.text[:37] + '...'
                         DBCitation.gene_symbols.append(DBGeneSymbol)
 
-                if elem.tag == "CommentsCorrections":
+                if elem.tag == "CommentsCorrectionsList":
                     DBCitation.comments = []
-                    for ctype in ("ErratumIn", "CommentOn", "CommentIn", "ErratumFor", "PartialRetractionIn",
-                                "PartialRetractionOf", "RepublishedFrom", "RepublishedIn", "RetractionOf",
-                                "RetractionIn", "UpdateIn", "UpdateOf", "SummaryForPatientsIn",
-                                "OriginalReportIn", "ReprintIn", "ReprintOf"):
+                    for comment in elem:
                         DBComment = PubMedDB.Comment()
-                        temp = elem.find(ctype)
-                        if temp != None:
-                            for subelem in temp:
-                                if subelem.find("RefSource") != None:
-                                    DBComment.ref_source = subelem.find("RefSource").text
-                                if subelem.find("PMID") != None:
-                                    DBComment.pmid = int(subelem.find("PMID").text)
-                                if subelem.find("Note") != None:
-                                    DBComment.note = subelem.find("Note").text
-                                DBComment.type = ctype
-                            DBCitation.comments.append(DBComment)
+                        comment_ref_type = comment.attrib['RefType']
+                        comment_ref_source = comment.find('RefSource')
+                        if comment_ref_source != None:
+                            if len(comment_ref_source.text) < 255:
+                                DBComment.ref_source = comment_ref_source.text
+                            else:
+                                DBComment.ref_source = comment_ref_source.text[0:251] + "..."
+                        if comment_ref_type != None:
+                            if len(comment_ref_type) < 22:
+                                DBComment.ref_type = comment_ref_type
+                            else:
+                                DBComment.ref_type = comment_ref_type[0:18] + "..."                            
+                        comment_pmid_version = comment.find('PMID')
+                        if comment_pmid_version != None:
+                            DBComment.pmid_version = comment_pmid_version.text
+                        DBCitation.comments.append(DBComment)
 
                 if elem.tag == "MedlineJournalInfo":
                     DBJournalInfo = PubMedDB.JournalInfo()
@@ -361,22 +365,23 @@ class MedlineParser:
 
                 if elem.tag == "MeshHeadingList":
                     DBCitation.meshheadings = []
+                    DBCitation.qualifiers = []
                     for mesh in elem:
                         DBMeSHHeading = PubMedDB.MeSHHeading()
-                        DBQualifier = PubMedDB.Qualifier()
-
                         mesh_desc = mesh.find("DescriptorName")
                         if mesh_desc != None:
                             DBMeSHHeading.descriptor_name = mesh_desc.text
                             DBMeSHHeading.descriptor_name_major_yn = mesh_desc.attrib['MajorTopicYN']
-                            DBQualifier.descriptor_name = mesh_desc.text
-
-                        mesh_qual = mesh.find("QualifierName")
-                        if mesh_qual != None:
-                            DBQualifier.qualifier_name = mesh_qual.text
-                            DBQualifier.qualifier_name_major_yn = mesh_qual.attrib['MajorTopicYN']
-                            DBCitation.qualifiers.append(DBQualifier)
-
+                            DBMeSHHeading.descriptor_ui = mesh_desc.attrib['UI']
+                        if mesh.find("QualifierName") != None:
+                            mesh_quals = mesh.findall("QualifierName")
+                            for qual in mesh_quals:
+                                DBQualifier = PubMedDB.Qualifier()
+                                DBQualifier.descriptor_name = mesh_desc.text
+                                DBQualifier.qualifier_name = qual.text
+                                DBQualifier.qualifier_name_major_yn = qual.attrib['MajorTopicYN']
+                                DBQualifier.qualifier_ui = qual.attrib['UI']
+                                DBCitation.qualifiers.append(DBQualifier)
                         DBCitation.meshheadings.append(DBMeSHHeading)
 
                 if elem.tag == "GrantList":
@@ -453,13 +458,23 @@ class MedlineParser:
                 if elem.tag == "VernacularTitle":
                     DBCitation.vernacular_title = elem.tag
 
+                if elem.tag == "OtherAbstract":
+                    DBOtherAbstract = PubMedDB.OtherAbstract()
+                    DBCitation.other_abstracts = []
+                    for other in elem:
+                        if other.tag == "AbstractText":
+                             DBOtherAbstract.other_abstract = other.text
+                    DBCitation.other_abstracts.append(DBOtherAbstract)
+
                 if elem.tag == "OtherID":
-                    DBCitation.others = []
-                    for subelem in elem:
-                        DBOther = PubMedDB.Other()
-                        DBOther.other_id_source = subelem.attrib['Source']
-                        DBOther.other_id = subelem.text
-                        DBCitation.others.append(DBOther)
+                    DBCitation.other_ids = []
+                    DBOtherID = PubMedDB.OtherID()
+                    if len(elem.text) < 80:
+                        DBOtherID.other_id = elem.text
+                    else:
+                        DBOtherID.other_id = elem.text[0:77] + "..."
+                    DBOtherID.other_id_source = elem.attrib['Source']
+                    DBCitation.other_ids.append(DBOtherID)
 
                 # start Kersten: some abstracts contain another structure - code changed:
                 # check for different labels: "OBJECTIVE", "CASE SUMMARY", ...
@@ -537,7 +552,22 @@ class MedlineParser:
                         DBCitation.keywords.append(DBKeyword)
 
                 if elem.tag == "Affiliation":
-                    DBCitation.article_affiliation = elem.text
+                    if len(elem.text) < 2000:
+                        DBCitation.article_affiliation = elem.text
+                    else:
+                        DBCitation.article_affiliation = elem.text[0:1996] + "..."
+
+                if elem.tag == "SupplMeshList":
+                    DBCitation.suppl_mesh_names = []
+                    for suppl_mesh in elem:
+                        DBSupplMeshName = PubMedDB.SupplMeshName()
+                        if len(suppl_mesh.text) < 80:
+                            DBSupplMeshName.suppl_mesh_name = suppl_mesh.text
+                        else:
+                            DBSupplMeshName.suppl_mesh_name = suppl_mesh.text[0:76] + "..."
+                        DBSupplMeshName.suppl_mesh_name_ui = suppl_mesh.attrib['UI']
+                        DBSupplMeshName.suppl_mesh_name_type = suppl_mesh.attrib['Type']
+                        DBCitation.suppl_mesh_names.append(DBSupplMeshName)
 
         self.session.commit()
         return True
