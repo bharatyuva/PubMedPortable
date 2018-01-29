@@ -38,8 +38,9 @@ class MedlineParser:
     def __init__(self, filepath,db):
         engine, Base = PubMedDB.init(db)
         Session = sessionmaker(bind=engine)
-        self.filepath = filepath
-        self.session = Session()
+        with session.no_autoflush:
+            self.filepath = filepath
+            self.session = Session()
 
 
     def _parse(self):
@@ -113,21 +114,20 @@ class MedlineParser:
                         # Keep database entry that is already saved in database and continue with the next PubMed-ID.
                         # Manually deleting entries is possible (with PGAdmin3 or via command-line), e.g.:
                         # DELETE FROM pubmed.tbl_medline_citation WHERE pmid = 25005691;
-                        with session.no_autoflush:
-                            
-                            if same_pmid:
-                                print "Article already in database - " + str(same_pmid[0]) + "Continuing with next PubMed-ID"
-                                DBCitation = PubMedDB.Citation()
-                                DBJournal = PubMedDB.Journal()
-                                elem.clear()
-                                self.session.commit()
-                                continue
-                            else:
-                                DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
-                                self.session.add(DBCitation)
 
-                            if loop_counter % 1000 == 0:
-                                self.session.commit()
+                        if same_pmid:
+                            print "Article already in database - " + str(same_pmid[0]) + "Continuing with next PubMed-ID"
+                            DBCitation = PubMedDB.Citation()
+                            DBJournal = PubMedDB.Journal()
+                            elem.clear()
+                            self.session.commit()
+                            continue
+                        else:
+                            DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
+                            self.session.add(DBCitation)
+
+                        if loop_counter % 1000 == 0:
+                            self.session.commit()
 
                     except (IntegrityError) as error:
                         warnings.warn("\nIntegrityError: "+str(error), Warning)
