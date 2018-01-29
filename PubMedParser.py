@@ -92,51 +92,52 @@ class MedlineParser:
                     pubmed_id = int(elem.find("PMID").text)
                     DBCitation.pmid = pubmed_id
 
-                    try:
-                        same_pmid = self.session.query(PubMedDB.Citation).filter( PubMedDB.Citation.pmid == pubmed_id ).all()
-                        # The following condition is only for incremental updates. 
+                    with session.no_autoflush:
+                        try:
+                            same_pmid = self.session.query(PubMedDB.Citation).filter( PubMedDB.Citation.pmid == pubmed_id ).all()
+                            # The following condition is only for incremental updates. 
 
-                        """
-                        # Implementation that replaces the database entry with the new article from the XML file.
-                        if same_pmid: # -> evt. any()
-                            same_pmid = same_pmid[0]
-                            warnings.warn('\nDoubled Citation found (%s).' % pubmed_id)
-                            if not same_pmid.date_revised or same_pmid.date_revised < DBCitation.date_revised:
-                                warnings.warn('\nReplace old Citation. Old Citation from %s, new citation from %s.' % (same_pmid.date_revised, DBCitation.date_revised) )
-                                self.session.delete( same_pmid )
+                            """
+                            # Implementation that replaces the database entry with the new article from the XML file.
+                            if same_pmid: # -> evt. any()
+                                same_pmid = same_pmid[0]
+                                warnings.warn('\nDoubled Citation found (%s).' % pubmed_id)
+                                if not same_pmid.date_revised or same_pmid.date_revised < DBCitation.date_revised:
+                                    warnings.warn('\nReplace old Citation. Old Citation from %s, new citation from %s.' % (same_pmid.date_revised, DBCitation.date_revised) )
+                                    self.session.delete( same_pmid )
+                                    self.session.commit()
+                                    DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
+                                    self.session.add( DBCitation )
+                            """
+
+                            # Keep database entry that is already saved in database and continue with the next PubMed-ID.
+                            # Manually deleting entries is possible (with PGAdmin3 or via command-line), e.g.:
+                            # DELETE FROM pubmed.tbl_medline_citation WHERE pmid = 25005691;
+                            if same_pmid:
+                                print "Article already in database - " + str(same_pmid[0]) + "Continuing with next PubMed-ID"
+                                DBCitation = PubMedDB.Citation()
+                                DBJournal = PubMedDB.Journal()
+                                elem.clear()
                                 self.session.commit()
+                                continue
+                            else:
                                 DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
-                                self.session.add( DBCitation )
-                        """
+                                self.session.add(DBCitation)
 
-                        # Keep database entry that is already saved in database and continue with the next PubMed-ID.
-                        # Manually deleting entries is possible (with PGAdmin3 or via command-line), e.g.:
-                        # DELETE FROM pubmed.tbl_medline_citation WHERE pmid = 25005691;
-                        if same_pmid:
-                            print "Article already in database - " + str(same_pmid[0]) + "Continuing with next PubMed-ID"
-                            DBCitation = PubMedDB.Citation()
-                            DBJournal = PubMedDB.Journal()
-                            elem.clear()
-                            self.session.commit()
-                            continue
-                        else:
-                            DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
-                            self.session.add(DBCitation)
+                            if loop_counter % 1000 == 0:
+                                self.session.commit()
 
-                        if loop_counter % 1000 == 0:
-                            self.session.commit()
+                        except (IntegrityError) as error:
+                            warnings.warn("\nIntegrityError: "+str(error), Warning)
+                            self.session.rollback()
+                        except Exception as e:
+                            warnings.warn("\nUnbekannter Fehler:"+str(e), Warning)
+                            self.session.rollback()
+                            raise
 
-                    except (IntegrityError) as error:
-                        warnings.warn("\nIntegrityError: "+str(error), Warning)
-                        self.session.rollback()
-                    except Exception as e:
-                        warnings.warn("\nUnbekannter Fehler:"+str(e), Warning)
-                        self.session.rollback()
-                        raise
-
-                    DBCitation = PubMedDB.Citation()
-                    DBJournal = PubMedDB.Journal()
-                    elem.clear()
+                        DBCitation = PubMedDB.Citation()
+                        DBJournal = PubMedDB.Journal()
+                        elem.clear()
 
                 #Kersten: some dates are given in 3-letter code - use dictionary month_code for conversion to digits:
                 if elem.tag == "DateCreated":
