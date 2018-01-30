@@ -38,9 +38,8 @@ class MedlineParser:
     def __init__(self, filepath,db):
         engine, Base = PubMedDB.init(db)
         Session = sessionmaker(bind=engine)
-        with session.no_autoflush:
-            self.filepath = filepath
-            self.session = Session()
+        self.filepath = filepath
+        self.session = Session()
 
 
     def _parse(self):
@@ -93,7 +92,6 @@ class MedlineParser:
                     pubmed_id = int(elem.find("PMID").text)
                     DBCitation.pmid = pubmed_id
 
-                    
                     try:
                         same_pmid = self.session.query(PubMedDB.Citation).filter( PubMedDB.Citation.pmid == pubmed_id ).all()
                         # The following condition is only for incremental updates. 
@@ -114,7 +112,6 @@ class MedlineParser:
                         # Keep database entry that is already saved in database and continue with the next PubMed-ID.
                         # Manually deleting entries is possible (with PGAdmin3 or via command-line), e.g.:
                         # DELETE FROM pubmed.tbl_medline_citation WHERE pmid = 25005691;
-
                         if same_pmid:
                             print "Article already in database - " + str(same_pmid[0]) + "Continuing with next PubMed-ID"
                             DBCitation = PubMedDB.Citation()
