@@ -121,7 +121,6 @@ class MedlineParser:
                             continue
                         else:
                             DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
-                            print("Came here 1", DBCitation.keyword_list_owner)
                             if DBCitation.article_title == None:
                                 self.session.rollback()
                                 continue
