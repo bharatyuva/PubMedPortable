@@ -121,6 +121,10 @@ class MedlineParser:
                             continue
                         else:
                             DBCitation.xml_files = [DBXMLFile] # adds an implicit add()
+                            print("Came here 1", DBCitation.keyword_list_owner)
+                            if DBCitation.article_title == None:
+                                self.session.rollback()
+                                continue
                             self.session.add(DBCitation)
 
                         if loop_counter % 1000 == 0:
@@ -544,6 +548,8 @@ class MedlineParser:
                             continue
                         DBKeyword = PubMedDB.Keyword()
                         DBKeyword.keyword = subelem.text
+                        if DBKeyword.keyword == None:
+                            continue
                         #catch KeyError in case there is no MajorTopicYN attribute before committing DBCitation
                         try:
                             DBKeyword.keyword_major_yn = subelem.attrib["MajorTopicYN"]
