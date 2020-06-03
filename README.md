@@ -5,7 +5,7 @@ PubMedPortable automatically builds a PostgreSQL relational database schema and 
 
 Please, have a look at our [Wiki](https://github.com/KerstenDoering/PubMedPortable/wiki) for more information.
 
-* [Introduction](https://github.com/KerstenDoering/PubMedPortable/wiki#introduction)
+* [Introduction](https://github.com/IYInfo/PubMedPortable/wiki#introduction)
 * [Installation instructions](https://github.com/KerstenDoering/PubMedPortable/wiki#installation)
 * [Setting up a database](https://github.com/KerstenDoering/PubMedPortable/wiki#build-up-a-relational-database-in-postgresql)
 * [Creating a full-text index](https://github.com/KerstenDoering/PubMedPortable/wiki#build-up-a-full-text-index-with-xapian-and-search-it)
