@@ -232,7 +232,7 @@ Installation with Docker
 
     - https://github.com/bgruening/docker-recipes/tree/master/pubmedportable
 
-- If you want to try the examples given in the sections 5 to 8, copy the Xapian directory from the <folder_of_your_choice> into the folder "PubMedPortable/full_text_index/xapian/" from "https://github.com/KerstenDoering/PubMedPortable" and run the Docker container in background. In case of using Docker, you can completely skip section 4.
+- If you want to try the examples given in the sections 5 to 8, copy the Xapian directory from the <folder_of_your_choice> into the folder "PubMedPortable/full_text_index/xapian/" from "https://github.com/IYInfo/PubMedPortable" and run the Docker container in background. In case of using Docker, you can completely skip section 4.
 
 - During the revision process of the PubMedPortable publication, the original name PubMed2Go was changed to PubMedPortable.
 
@@ -299,7 +299,7 @@ Build up a Relational Database in PostgreSQL
 
 - If you want to extend the database schema in terms of additional columns or tables, you can have a look at this diff in the GitHub repository:
 
-    - https://github.com/KerstenDoering/PubMedPortable/commit/99f39f385c83d121422d1c48694c7fb2e6e421b3
+    - https://github.com/IYInfo/PubMedPortable/commit/99f39f385c83d121422d1c48694c7fb2e6e421b3
 
     - Consider the example of UI fields (MeSH IDs) for chemical substances. 
 
