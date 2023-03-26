@@ -229,7 +229,7 @@ Installation with Docker
 
     - https://github.com/bgruening/docker-recipes/tree/master/pubmedportable
 
-- If you want to try the examples given in the wiki, copy the Xapian directory from the <folder_of_your_choice> into the folder "PubMedPortable/full_text_index/xapian/" from "https://github.com/KerstenDoering/PubMedPortable" and run the Docker container in background.
+- If you want to try the examples given in the wiki, copy the Xapian directory from the <folder_of_your_choice> into the folder "PubMedPortable/full_text_index/xapian/" from "https://github.com/IYInfo/PubMedPortable" and run the Docker container in background.
 
 - After successful installation, the rest of this documentation can be skipped.
 

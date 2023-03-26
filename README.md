@@ -15,6 +15,7 @@ Please, have a look at our [Wiki](https://github.com/IYInfo/PubMedPortable/wiki)
 * [Named Entity Recognition Tools](https://github.com/IYInfo/PubMedPortable/wiki#named-entity-recognition-tools)
 * [Lucene as an Alternative to Xapian](https://github.com/IYInfo/PubMedPortable/wiki#lucene-as-an-alternative-to-xapian)
 
+
 To cite PubMedPortable, please reference:
 
 Döring K, Grüning BA, Telukunta KK, Thomas P, Günther S (2016) PubMedPortable: A Framework for Supporting the Development of Text Mining Applications. PLoS ONE 11(10): e0163794. doi:10.1371/journal.pone.0163794

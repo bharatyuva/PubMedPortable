@@ -15,7 +15,7 @@ searchConn.reopen()
 
 #########################
 
-querystring = "R115777"
+querystring = "informatics"
 #another example:
 #querystring = "pancreatic cancer" #also searches for "pancreat" and "cancers"
 #use phrase search to get only exact hits

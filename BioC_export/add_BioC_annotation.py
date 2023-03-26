@@ -121,6 +121,7 @@ if __name__=="__main__":
                 occurrences = []
                 for mesh in mesh_terms:
                     #search for start and end positions with case insensitivity
+
                     #if there is no abstract (no passage.text) in the document, the regex search will result in an error - use try-except block
                     try: 
                         positions = [(a.start(), a.end()) for a in list(re.finditer(mesh.lower(), passage.text.lower()))]
@@ -130,7 +131,8 @@ if __name__=="__main__":
                                  # the triple is (start position, term length, MeSH term)
                                 occurrences.append((tuples[0], len(mesh), mesh))
                     except:
-                            print doc.id, mesh, "Mesh term not found."
+                            print doc.id, mesh, "Mesh terms not found."
+
                 # sorted by start positions
                 occurrences.sort()
                 for triple in occurrences:
