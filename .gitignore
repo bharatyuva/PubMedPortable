@@ -1,5 +1,8 @@
-
 # Created by https://www.gitignore.io/api/linux,python
+
+## Repository related entries
+
+full_text_index/xapian
 
 ### Linux ###
 *~
